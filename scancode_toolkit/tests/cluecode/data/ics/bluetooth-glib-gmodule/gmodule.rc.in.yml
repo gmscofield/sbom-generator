@@ -1,0 +1,11 @@
+what:
+  - copyrights
+  - holders
+  - holders_summary
+copyrights:
+  - Copyright (c) 1998-2000 Tim Janik. Modified by the GLib Team and others
+holders:
+  - Tim Janik. Modified by the GLib Team and others
+holders_summary:
+  - value: Tim Janik. Modified by the GLib Team and others
+    count: 1

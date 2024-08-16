@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "kwin",
+  "version": "5.22.0-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "An easy to use, but flexible, composited Window Manager",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-2.0-plus AND (gpl-2.0 OR gpl-3.0) AND lgpl-2.1",
+  "declared_license_expression_spdx": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only",
+  "license_detections": [
+    {
+      "license_expression": "gpl-2.0-plus AND (gpl-2.0 OR gpl-3.0) AND lgpl-2.1",
+      "license_expression_spdx": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only",
+      "matches": [
+        {
+          "license_expression": "gpl-2.0-plus AND (gpl-2.0 OR gpl-3.0) AND lgpl-2.1",
+          "spdx_license_expression": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 20,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-gpl_2_0_plus_and__gpl_2_0_or_gpl_3_0__and_lgpl_2_1-f6e235567e8c0f3615b6e0cf705ff2198e12b95a",
+          "rule_url": null,
+          "matched_text": "gpl-2.0-or-later AND (gpl-2.0-only OR gpl-3.0-only) AND lgpl-2.1-only"
+        }
+      ],
+      "identifier": "gpl_2_0_plus_and__gpl_2_0_or_gpl_3_0__and_lgpl_2_1-a48280a4-549b-0102-7c40-4c946e73e4b3"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND LGPL-2.1-only",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://download.kde.org/stable/plasma/5.22.0/kwin-5.22.0.tar.xz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "kwin-5.22.0.tar.xz",
+        "sha512": "eccd6d674a6ab7820de8f7765b25b55e8554ea5ddc21af90f189789856a047dc4468ced4a897b2e94c084ebb7e85f114e75cb7e63253497d36c76c2b228eb471"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/kwin@5.22.0-r0"
+}

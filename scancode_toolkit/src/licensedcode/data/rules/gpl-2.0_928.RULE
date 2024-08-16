@@ -1,0 +1,15 @@
+---
+license_expression: gpl-2.0
+is_license_notice: yes
+relevance: 100
+referenced_filenames:
+    - /usr/share/common-licenses/GPL-2
+---
+
+License
+The programs copyright by their
+authors and redistributable under the terms of the GNU General
+Public License. 
+On Debian Linux systems, the complete text of
+the GNU General Public License can be found in
+/usr/share/common-licenses/GPL-2'.

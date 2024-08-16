@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "hunspell-de-de",
+  "version": "20170112-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "German (Germany) hunspell dictionaries",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-3.0",
+  "declared_license_expression_spdx": "GPL-3.0-only",
+  "license_detections": [
+    {
+      "license_expression": "gpl-3.0",
+      "license_expression_spdx": "GPL-3.0-only",
+      "matches": [
+        {
+          "license_expression": "gpl-3.0",
+          "spdx_license_expression": "GPL-3.0-only",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-hash",
+          "score": 50.0,
+          "matched_length": 4,
+          "match_coverage": 100.0,
+          "rule_relevance": 50,
+          "rule_identifier": "spdx_license_id_gpl-3.0-only_for_gpl-3.0.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/spdx_license_id_gpl-3.0-only_for_gpl-3.0.RULE",
+          "matched_text": "gpl-3.0-only"
+        }
+      ],
+      "identifier": "gpl_3_0-c40e1583-9bea-e122-2576-a76192b84364"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-3.0-only",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": "hunspell-de-de-20170112.zip",
+        "url": "https://sourceforge.net/projects/aoo-extensions/files/1075/15/dict-de_de-frami_2017-01-12.oxt/download"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "hunspell-de-de-20170112.zip",
+        "sha512": "f44d30c875335f52674ea91557c716eb2c9917e7bd170372c8994d8d58e948ef2b68f004d93f175173ffad4a17a1920c69eaffe915668e0c4dc5fee7f8abcc6e"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/hunspell-de-de@20170112-r0"
+}

@@ -1,0 +1,60 @@
+[
+  {
+    "type": "deb",
+    "namespace": "ubuntu",
+    "name": "perl-base",
+    "version": "5.22.1-9ubuntu0.6",
+    "qualifiers": {
+      "arch": "amd64"
+    },
+    "subpath": null,
+    "primary_language": null,
+    "description": "minimal Perl system\n Perl is a scripting language used in many system scripts and utilities.\n .\n This package provides a Perl interpreter and the small subset of the\n standard run-time library required to perform basic tasks. For a full\n Perl installation, install \"perl\" (and its dependencies, \"perl-modules-5.22\"\n and \"perl-doc\").",
+    "release_date": null,
+    "parties": [
+      {
+        "type": null,
+        "role": "maintainer",
+        "name": "Ubuntu Developers",
+        "email": "ubuntu-devel-discuss@lists.ubuntu.com",
+        "url": null
+      }
+    ],
+    "keywords": [
+      "perl"
+    ],
+    "homepage_url": "http://dev.perl.org/perl5/",
+    "download_url": null,
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": null,
+    "holder": null,
+    "declared_license_expression": null,
+    "declared_license_expression_spdx": null,
+    "license_detections": [],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": null,
+    "notice_text": null,
+    "source_packages": [
+      "pkg:deb/ubuntu/perl"
+    ],
+    "file_references": [],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {},
+    "dependencies": [],
+    "repository_homepage_url": null,
+    "repository_download_url": null,
+    "api_data_url": null,
+    "datasource_id": "debian_installed_status_db",
+    "purl": "pkg:deb/ubuntu/perl-base@5.22.1-9ubuntu0.6?arch=amd64"
+  }
+]

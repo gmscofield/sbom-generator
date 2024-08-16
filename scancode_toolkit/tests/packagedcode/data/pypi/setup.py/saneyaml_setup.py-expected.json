@@ -1,0 +1,126 @@
+[
+  {
+    "type": "pypi",
+    "namespace": null,
+    "name": "saneyaml",
+    "version": "0.2dev",
+    "qualifiers": {},
+    "subpath": null,
+    "primary_language": "Python",
+    "description": "Dump readable YAML and load safely any YAML preserving ordering and avoiding surprises of type conversions. This library is a PyYaml wrapper with sane behaviour to read and write readable YAML safely, typically when used for configuration.",
+    "release_date": null,
+    "parties": [
+      {
+        "type": "person",
+        "role": "author",
+        "name": "AboutCode authors and others.",
+        "email": "info@nexb.com",
+        "url": null
+      }
+    ],
+    "keywords": [
+      "yaml",
+      "block",
+      "flow",
+      "readable",
+      "Development Status :: 4 - Beta",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 2",
+      "Programming Language :: Python :: 2.7",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3.6",
+      "Intended Audience :: Developers",
+      "Operating System :: OS Independent",
+      "Topic :: Software Development",
+      "Topic :: Utilities"
+    ],
+    "homepage_url": "http://aboutcode.org",
+    "download_url": null,
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": null,
+    "holder": null,
+    "declared_license_expression": "apache-2.0",
+    "declared_license_expression_spdx": "Apache-2.0",
+    "license_detections": [
+      {
+        "license_expression": "apache-2.0",
+        "license_expression_spdx": "Apache-2.0",
+        "matches": [
+          {
+            "license_expression": "apache-2.0",
+            "spdx_license_expression": "Apache-2.0",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 100.0,
+            "matched_length": 3,
+            "match_coverage": 100.0,
+            "rule_relevance": 100,
+            "rule_identifier": "spdx_license_id_apache-2.0_for_apache-2.0.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/spdx_license_id_apache-2.0_for_apache-2.0.RULE",
+            "matched_text": "Apache-2.0"
+          }
+        ],
+        "identifier": "apache_2_0-d66ab77d-a5cc-7104-e702-dc7df61fe9e8"
+      },
+      {
+        "license_expression": "apache-2.0",
+        "license_expression_spdx": "Apache-2.0",
+        "matches": [
+          {
+            "license_expression": "apache-2.0",
+            "spdx_license_expression": "Apache-2.0",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 95.0,
+            "matched_length": 6,
+            "match_coverage": 100.0,
+            "rule_relevance": 95,
+            "rule_identifier": "pypi_apache_no-version.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/pypi_apache_no-version.RULE",
+            "matched_text": "- 'License :: OSI Approved :: Apache Software License'"
+          }
+        ],
+        "identifier": "apache_2_0-e267f9d9-ae62-e9c9-9cc2-8cd0a1e4928f"
+      }
+    ],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": "license: Apache-2.0\nclassifiers:\n  - 'License :: OSI Approved :: Apache Software License'\n",
+    "notice_text": null,
+    "source_packages": [],
+    "file_references": [],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {},
+    "dependencies": [
+      {
+        "purl": "pkg:pypi/pyyaml",
+        "extracted_requirement": "<=3.13,>=3.11",
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      }
+    ],
+    "repository_homepage_url": "https://pypi.org/project/saneyaml",
+    "repository_download_url": "https://pypi.org/packages/source/s/saneyaml/saneyaml-0.2dev.tar.gz",
+    "api_data_url": "https://pypi.org/pypi/saneyaml/0.2dev/json",
+    "datasource_id": "pypi_setup_py",
+    "purl": "pkg:pypi/saneyaml@0.2dev"
+  }
+]

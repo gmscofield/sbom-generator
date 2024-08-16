@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "faac",
+  "version": "1.30-r1",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "FAAC is an AAC audio encoder.",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-3.0-plus",
+  "declared_license_expression_spdx": "GPL-3.0-or-later",
+  "license_detections": [
+    {
+      "license_expression": "gpl-3.0-plus",
+      "license_expression_spdx": "GPL-3.0-or-later",
+      "matches": [
+        {
+          "license_expression": "gpl-3.0-plus",
+          "spdx_license_expression": "GPL-3.0-or-later",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-hash",
+          "score": 50.0,
+          "matched_length": 5,
+          "match_coverage": 100.0,
+          "rule_relevance": 50,
+          "rule_identifier": "spdx_license_id_gpl-3.0-or-later_for_gpl-3.0-plus.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/spdx_license_id_gpl-3.0-or-later_for_gpl-3.0-plus.RULE",
+          "matched_text": "gpl-3.0-or-later"
+        }
+      ],
+      "identifier": "gpl_3_0_plus-d1fd1c7d-8818-8fde-91e8-ff4fbc118ae1"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-3.0-or-later",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": "faac-1.30.tar.gz",
+        "url": "https://github.com/knik0/faac/archive/1_30.tar.gz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "faac-1.30.tar.gz",
+        "sha512": "8582cd580dba2a347d15dc4fab42020d7120d0552c54ab74cfaf59ba1b270abb94c67e39d42459a14cbc6e98f3fd00cbda589e1b4f0c7278e41bdef6ae7b6554"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/faac@1.30-r1"
+}

@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "qt6-qt3d",
+  "version": "6.1.1-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "C++ and QML APIs for easy inclusion of 3D graphics",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "lgpl-2.1 AND lgpl-3.0 AND gpl-3.0 AND qt-gpl-exception-1.0",
+  "declared_license_expression_spdx": "LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND Qt-GPL-exception-1.0",
+  "license_detections": [
+    {
+      "license_expression": "lgpl-2.1 AND lgpl-3.0 AND gpl-3.0 AND qt-gpl-exception-1.0",
+      "license_expression_spdx": "LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND Qt-GPL-exception-1.0",
+      "matches": [
+        {
+          "license_expression": "lgpl-2.1 AND lgpl-3.0 AND gpl-3.0 AND qt-gpl-exception-1.0",
+          "spdx_license_expression": "LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND Qt-GPL-exception-1.0",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 20,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-lgpl_2_1_and_lgpl_3_0_and_gpl_3_0_and_qt_gpl_exception_1_0-b369424d9cea52ba4d1953c9bcf424cc48586aee",
+          "rule_url": null,
+          "matched_text": "lgpl-2.1-only AND lgpl-3.0-only AND gpl-3.0-only AND qt-gpl-exception-1.0"
+        }
+      ],
+      "identifier": "lgpl_2_1_and_lgpl_3_0_and_gpl_3_0_and_qt_gpl_exception_1_0-f71c2169-023a-ec07-d25a-1a0a6ae6fc4f"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "LGPL-2.1-only AND LGPL-3.0-only AND GPL-3.0-only AND Qt-GPL-exception-1.0",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://download.qt.io/official_releases/qt/6.1/6.1.1/submodules/qt3d-everywhere-src-6.1.1.tar.xz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "qt3d-everywhere-src-6.1.1.tar.xz",
+        "sha512": "5bdeb03f3072a1803b6aa5f385c0a52f10cfaddc4db02eec4d56cb9677782a2c7b102d6edea32fc14edb0ad83901a70f3b94d233f34b1a8d38bdcc6dd916ecaa"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/qt6-qt3d@6.1.1-r0"
+}

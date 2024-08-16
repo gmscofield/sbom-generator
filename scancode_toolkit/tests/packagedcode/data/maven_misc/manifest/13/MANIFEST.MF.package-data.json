@@ -1,0 +1,19 @@
+{
+  "type": "jar",
+  "datasource_id": "java_jar_manifest",
+  "namespace": "commons-codec",
+  "name": "Apache Commons Codec",
+  "version": "1.11",
+  "description": "",
+  "extracted_license_statement": null,
+  "copyright": null,
+  "homepage_url": "http://commons.apache.org/proper/commons-codec/",
+  "parties": [
+    {
+      "role": "vendor",
+      "name": "The Apache Software Foundation"
+    }
+  ],
+  "vcs_url": null,
+  "code_view_url": null
+}

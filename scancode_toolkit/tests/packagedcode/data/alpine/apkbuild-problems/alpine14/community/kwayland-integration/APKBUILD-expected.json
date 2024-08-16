@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "kwayland-integration",
+  "version": "5.22.0-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "KWayland integration",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "lgpl-2.1 OR lgpl-3.0",
+  "declared_license_expression_spdx": "LGPL-2.1-only OR LGPL-3.0-only",
+  "license_detections": [
+    {
+      "license_expression": "lgpl-2.1 OR lgpl-3.0",
+      "license_expression_spdx": "LGPL-2.1-only OR LGPL-3.0-only",
+      "matches": [
+        {
+          "license_expression": "lgpl-2.1 OR lgpl-3.0",
+          "spdx_license_expression": "LGPL-2.1-only OR LGPL-3.0-only",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 9,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-lgpl_2_1_or_lgpl_3_0-e4927f7ed1ca2211b75c4c4b498140cdc67e340b",
+          "rule_url": null,
+          "matched_text": "lgpl-2.1-only OR lgpl-3.0-only"
+        }
+      ],
+      "identifier": "lgpl_2_1_or_lgpl_3_0-ace3add4-15cc-ddf5-70c6-3c6914842c58"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "LGPL-2.1-only OR LGPL-3.0-only",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://download.kde.org/stable/plasma/5.22.0/kwayland-integration-5.22.0.tar.xz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "kwayland-integration-5.22.0.tar.xz",
+        "sha512": "337ec281dd0ce7791d93af123ef1e5bd476328c91edc28df514c87c714b27d0f6a739b55f11e1dbf3ce0f6826ab437f404639b116644234086b855b748ff71d9"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/kwayland-integration@5.22.0-r0"
+}

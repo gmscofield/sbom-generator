@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "audacious-plugins",
+  "version": "4.0.5-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "A playlist-oriented media player with multiple interfaces (plugins)",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "bsd-simplified AND bsd-new AND isc AND gpl-2.0 AND gpl-2.0-plus AND gpl-3.0 AND gpl-3.0-plus",
+  "declared_license_expression_spdx": "BSD-2-Clause AND BSD-3-Clause AND ISC AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later",
+  "license_detections": [
+    {
+      "license_expression": "bsd-simplified AND bsd-new AND isc AND gpl-2.0 AND gpl-2.0-plus AND gpl-3.0 AND gpl-3.0-plus",
+      "license_expression_spdx": "BSD-2-Clause AND BSD-3-Clause AND ISC AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later",
+      "matches": [
+        {
+          "license_expression": "bsd-simplified AND bsd-new AND isc AND gpl-2.0 AND gpl-2.0-plus AND gpl-3.0 AND gpl-3.0-plus",
+          "spdx_license_expression": "BSD-2-Clause AND BSD-3-Clause AND ISC AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 31,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-bsd_simplified_and_bsd_new_and_isc_and_gpl_2_0_and_gpl_2_0_plus_and_gpl_3_0_and_gpl_3_0_plus-64f2ebe21c0b7e185e837ac00b9ccd756d3654c7",
+          "rule_url": null,
+          "matched_text": "bsd-2-clause AND bsd-3-clause AND isc AND gpl-2.0-only AND gpl-2.0-or-later AND gpl-3.0-only AND gpl-3.0-or-later"
+        }
+      ],
+      "identifier": "bsd_simplified_and_bsd_new_and_isc_and_gpl_2_0_and_gpl_2_0_plus_and_gpl_3_0_and_gpl_3_0_plus-1c56b883-174b-da11-d6b5-f4ad4d12513e"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "BSD-2-Clause AND BSD-3-Clause AND ISC AND GPL-2.0-only AND GPL-2.0-or-later AND GPL-3.0-only AND GPL-3.0-or-later",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "http://distfiles.audacious-media-player.org/audacious-plugins-4.0.5.tar.bz2"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "audacious-plugins-4.0.5.tar.bz2",
+        "sha512": "90ab2edbfc797fa835aae9937b5f478a0ca575f31c443d9e8ba7394e1615f605beb417372872874c94d4f804dba7bea9fbae2078e162178386683d8a3e36c108"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/audacious-plugins@4.0.5-r0"
+}

@@ -1,0 +1,47 @@
+declared_license:
+declared_license_expression: intel
+declared_license_expression_spdx: LicenseRef-scancode-intel
+other_license_expression:
+other_license_expression_spdx:
+license_detections:
+  - license_expression: intel
+    license_expression_spdx: LicenseRef-scancode-intel
+    matches:
+      - license_expression: intel
+        spdx_license_expression: LicenseRef-scancode-intel
+        from_file:
+        start_line: 8
+        end_line: 46
+        matcher: 2-aho
+        score: '95.0'
+        matched_length: 268
+        match_coverage: '100.0'
+        rule_relevance: 95
+        rule_identifier: intel_2.RULE
+        rule_url: https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/intel_2.RULE
+        matched_text: "Redistribution.  \n\nRedistribution and use in binary form, without modification,\
+          \ are\npermitted provided that the following conditions are met:\n\n * Redistributions\
+          \ must reproduce the above copyright notice and the\n   following disclaimer in the\
+          \ documentation and/or other materials\n   provided with the distribution.\n\n * Neither\
+          \ the name of Intel Corporation nor the names of its\n   suppliers may be used to\
+          \ endorse or promote products derived from\n   this software without specific prior\
+          \ written permission.\n\n * No reverse engineering, decompilation, or disassembly\
+          \ of this\n   software is permitted.\n\nLimited patent license.\n\nIntel Corporation\
+          \ grants a world-wide, royalty-free, non-exclusive\nlicense under patents it now or\
+          \ hereafter owns or controls to make,\nhave made, use, import, offer to sell and sell\
+          \ (“Utilize”) this\nsoftware, but solely to the extent that any such patent is necessary\n\
+          to Utilize the software alone.  The patent license shall not apply to\nany combinations\
+          \ which include this software.  No hardware per se is\nlicensed hereunder.\n\nDISCLAIMER.\
+          \  \n\nTHIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS\n\"AS IS\"\
+          \ AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT\nLIMITED TO, THE IMPLIED\
+          \ WARRANTIES OF MERCHANTABILITY AND FITNESS FOR\nA PARTICULAR PURPOSE ARE DISCLAIMED.\
+          \ IN NO EVENT SHALL THE COPYRIGHT\nOWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,\
+          \ INDIRECT, INCIDENTAL,\nSPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,\
+          \ BUT NOT\nLIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,\n\
+          DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY\nTHEORY OF LIABILITY,\
+          \ WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT\n(INCLUDING NEGLIGENCE OR OTHERWISE)\
+          \ ARISING IN ANY WAY OUT OF THE USE\nOF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY\
+          \ OF SUCH DAMAGE."
+    identifier: intel-aad21753-33a8-9b6b-b0be-dbc0838c75ab
+other_license_detections: []
+copyright: Copyright (c) 2008, Intel Corporation

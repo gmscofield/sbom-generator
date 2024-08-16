@@ -1,0 +1,14 @@
+---
+license_expression: sax-pd
+is_license_notice: yes
+is_deprecated: yes
+notes: |
+    Added in SPDX license list 3.23
+    Replaced by license: sax-pd-2.0
+---
+
+I hereby abandon any property rights to SAX 2.0 (the Simple API for
+XML), and release all of the SAX 2.0 source code, compiled code, and
+documentation contained in this distribution into the Public Domain.
+SAX comes with NO WARRANTY or guarantee of fitness for any
+purpose.

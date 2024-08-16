@@ -1,0 +1,88 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "ruby-rspec",
+  "version": "3.10.0-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "Behaviour Driven Development for Ruby",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "mit",
+  "declared_license_expression_spdx": "MIT",
+  "license_detections": [
+    {
+      "license_expression": "mit",
+      "license_expression_spdx": "MIT",
+      "matches": [
+        {
+          "license_expression": "mit",
+          "spdx_license_expression": "MIT",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 1,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-mit-1b937028f397e2c5fe4eb6a0abd781ab80f9eeff",
+          "rule_url": null,
+          "matched_text": "mit"
+        }
+      ],
+      "identifier": "mit-704ced38-ea60-e53b-6c20-390fe781b1c3"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "MIT",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": "ruby-rspec-3.10.0.tar.gz",
+        "url": "https://github.com/rspec/rspec/archive/v3.10.0.tar.gz"
+      },
+      {
+        "file_name": "gemspec.patch",
+        "url": null
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "ruby-rspec-3.10.0.tar.gz",
+        "sha512": "afc2b04d0cfbe26d5f485c3d22e68a95394d5f0e3be44849562d565bd87eba9157f8ee9e1faee9ad22b7572906d17db242913036b9960f5d3871c7df5140629c"
+      },
+      {
+        "file_name": "gemspec.patch",
+        "sha512": "f554eef881574e68532dd6c9edeb6b8ad172ac707f7518134378e1099a40ada959c6c770514aab13a6345343113594208be0e42044803c0c2cde3adde00c5520"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/ruby-rspec@3.10.0-r0"
+}

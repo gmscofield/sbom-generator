@@ -1,0 +1,9 @@
+packageurl-python
+pip_requirements_parser
+PyYAML
+requests
+Jinja2
+toml
+pandas
+cyclonedx-python-lib==7.5.1
+spdx-tools

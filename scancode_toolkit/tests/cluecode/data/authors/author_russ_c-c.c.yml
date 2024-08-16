@@ -1,0 +1,10 @@
+what:
+  - authors
+  - authors_summary
+  - copyrights
+  - holders
+copyrights:
+  - Vladimir Oleynik <dzo@simtreas.ru> (c) 2003
+holders:
+  - Vladimir Oleynik
+notes: these are detected as copyrights, not authors

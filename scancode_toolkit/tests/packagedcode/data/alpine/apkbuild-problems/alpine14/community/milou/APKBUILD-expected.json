@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "milou",
+  "version": "5.22.0-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "A dedicated search application built on top of Baloo",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-2.0-plus AND (gpl-2.0 OR gpl-3.0) AND (lgpl-2.1 OR lgpl-3.0)",
+  "declared_license_expression_spdx": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)",
+  "license_detections": [
+    {
+      "license_expression": "gpl-2.0-plus AND (gpl-2.0 OR gpl-3.0) AND (lgpl-2.1 OR lgpl-3.0)",
+      "license_expression_spdx": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)",
+      "matches": [
+        {
+          "license_expression": "gpl-2.0-plus AND (gpl-2.0 OR gpl-3.0) AND (lgpl-2.1 OR lgpl-3.0)",
+          "spdx_license_expression": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 25,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-gpl_2_0_plus_and__gpl_2_0_or_gpl_3_0__and__lgpl_2_1_or_lgpl_3_0-f2624eb417fc2a933301bad7d7d05a012dd774a8",
+          "rule_url": null,
+          "matched_text": "gpl-2.0-or-later AND (gpl-2.0-only OR gpl-3.0-only) AND (lgpl-2.1-only OR lgpl-3.0-only)"
+        }
+      ],
+      "identifier": "gpl_2_0_plus_and__gpl_2_0_or_gpl_3_0__and__lgpl_2_1_or_lgpl_3_0-3f1e2915-87a3-5fe0-b43e-f216cae5570b"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-2.0-or-later AND (GPL-2.0-only OR GPL-3.0-only) AND (LGPL-2.1-only OR LGPL-3.0-only)",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://download.kde.org/stable/plasma/5.22.0/milou-5.22.0.tar.xz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "milou-5.22.0.tar.xz",
+        "sha512": "a6a479d68d9efbb9be06c137e39a26635aabcb78ad569c25d018b10dbe79b3c7dddd8d1c5396ebf49fd7d08eb96cba3e75db8c4ad4048940cd31fb9175bcce26"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/milou@5.22.0-r0"
+}

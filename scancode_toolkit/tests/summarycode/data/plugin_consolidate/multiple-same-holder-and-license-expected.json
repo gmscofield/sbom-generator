@@ -1,0 +1,290 @@
+{
+  "packages": [],
+  "dependencies": [],
+  "license_detections": [
+    {
+      "identifier": "gpl_2_0-20789449-d01b-5c54-146e-d0c746e6368a",
+      "license_expression": "gpl-2.0",
+      "license_expression_spdx": "GPL-2.0-only",
+      "detection_count": 2,
+      "reference_matches": [
+        {
+          "license_expression": "gpl-2.0",
+          "license_expression_spdx": "GPL-2.0-only",
+          "from_file": "multiple-same-holder-and-license/bar",
+          "start_line": 4,
+          "end_line": 4,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 4,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "gpl-2.0_1074.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_1074.RULE"
+        },
+        {
+          "license_expression": "gpl-2.0",
+          "license_expression_spdx": "GPL-2.0-only",
+          "from_file": "multiple-same-holder-and-license/bar",
+          "start_line": 5,
+          "end_line": 5,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 4,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "gpl-2.0_1074.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_1074.RULE"
+        }
+      ]
+    }
+  ],
+  "consolidated_components": [
+    {
+      "type": "holders",
+      "identifier": "corp_ibm_1",
+      "consolidated_license_expression": "gpl-2.0",
+      "consolidated_holders": [
+        "IBM Corp."
+      ],
+      "consolidated_copyright": "Copyright (c) IBM Corp.",
+      "core_license_expression": "gpl-2.0",
+      "core_holders": [
+        "IBM Corp."
+      ],
+      "other_license_expression": null,
+      "other_holders": [],
+      "files_count": 2
+    }
+  ],
+  "consolidated_packages": [],
+  "files": [
+    {
+      "path": "multiple-same-holder-and-license",
+      "type": "directory",
+      "name": "multiple-same-holder-and-license",
+      "base_name": "multiple-same-holder-and-license",
+      "extension": "",
+      "size": 0,
+      "sha1": null,
+      "md5": null,
+      "sha256": null,
+      "mime_type": null,
+      "file_type": null,
+      "programming_language": null,
+      "is_binary": false,
+      "is_text": false,
+      "is_archive": false,
+      "is_media": false,
+      "is_source": false,
+      "is_script": false,
+      "package_data": [],
+      "for_packages": [],
+      "detected_license_expression": null,
+      "detected_license_expression_spdx": null,
+      "license_detections": [],
+      "license_clues": [],
+      "percentage_of_license_text": 0,
+      "copyrights": [],
+      "holders": [],
+      "authors": [],
+      "consolidated_to": [
+        "corp_ibm_1"
+      ],
+      "files_count": 2,
+      "dirs_count": 0,
+      "size_count": 164,
+      "scan_errors": []
+    },
+    {
+      "path": "multiple-same-holder-and-license/bar",
+      "type": "file",
+      "name": "bar",
+      "base_name": "bar",
+      "extension": "",
+      "size": 82,
+      "sha1": "aa6bd87dbe009f5fbd70b2653a60fc0b63c78b8e",
+      "md5": "6456c2560504a2b5896168b54e4c02fa",
+      "sha256": "8d4f6116197c105da3298ae38a773e55cf587e198624d27d0abbbbea73035e82",
+      "mime_type": "text/plain",
+      "file_type": "ASCII text",
+      "programming_language": null,
+      "is_binary": false,
+      "is_text": true,
+      "is_archive": false,
+      "is_media": false,
+      "is_source": false,
+      "is_script": false,
+      "package_data": [],
+      "for_packages": [],
+      "detected_license_expression": "gpl-2.0",
+      "detected_license_expression_spdx": "GPL-2.0-only",
+      "license_detections": [
+        {
+          "license_expression": "gpl-2.0",
+          "license_expression_spdx": "GPL-2.0-only",
+          "matches": [
+            {
+              "license_expression": "gpl-2.0",
+              "spdx_license_expression": "GPL-2.0-only",
+              "from_file": "multiple-same-holder-and-license/bar",
+              "start_line": 4,
+              "end_line": 4,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 4,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "gpl-2.0_1074.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_1074.RULE"
+            },
+            {
+              "license_expression": "gpl-2.0",
+              "spdx_license_expression": "GPL-2.0-only",
+              "from_file": "multiple-same-holder-and-license/bar",
+              "start_line": 5,
+              "end_line": 5,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 4,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "gpl-2.0_1074.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_1074.RULE"
+            }
+          ],
+          "identifier": "gpl_2_0-20789449-d01b-5c54-146e-d0c746e6368a"
+        }
+      ],
+      "license_clues": [],
+      "percentage_of_license_text": 50.0,
+      "copyrights": [
+        {
+          "copyright": "Copyright (c) IBM Corp.",
+          "start_line": 1,
+          "end_line": 1
+        },
+        {
+          "copyright": "Copyright (c) IBM Corp.",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "holders": [
+        {
+          "holder": "IBM Corp.",
+          "start_line": 1,
+          "end_line": 1
+        },
+        {
+          "holder": "IBM Corp.",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "authors": [],
+      "consolidated_to": [
+        "corp_ibm_1"
+      ],
+      "files_count": 0,
+      "dirs_count": 0,
+      "size_count": 0,
+      "scan_errors": []
+    },
+    {
+      "path": "multiple-same-holder-and-license/foo",
+      "type": "file",
+      "name": "foo",
+      "base_name": "foo",
+      "extension": "",
+      "size": 82,
+      "sha1": "aa6bd87dbe009f5fbd70b2653a60fc0b63c78b8e",
+      "md5": "6456c2560504a2b5896168b54e4c02fa",
+      "sha256": "8d4f6116197c105da3298ae38a773e55cf587e198624d27d0abbbbea73035e82",
+      "mime_type": "text/plain",
+      "file_type": "ASCII text",
+      "programming_language": null,
+      "is_binary": false,
+      "is_text": true,
+      "is_archive": false,
+      "is_media": false,
+      "is_source": false,
+      "is_script": false,
+      "package_data": [],
+      "for_packages": [],
+      "detected_license_expression": "gpl-2.0",
+      "detected_license_expression_spdx": "GPL-2.0-only",
+      "license_detections": [
+        {
+          "license_expression": "gpl-2.0",
+          "license_expression_spdx": "GPL-2.0-only",
+          "matches": [
+            {
+              "license_expression": "gpl-2.0",
+              "spdx_license_expression": "GPL-2.0-only",
+              "from_file": "multiple-same-holder-and-license/foo",
+              "start_line": 4,
+              "end_line": 4,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 4,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "gpl-2.0_1074.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_1074.RULE"
+            },
+            {
+              "license_expression": "gpl-2.0",
+              "spdx_license_expression": "GPL-2.0-only",
+              "from_file": "multiple-same-holder-and-license/foo",
+              "start_line": 5,
+              "end_line": 5,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 4,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "gpl-2.0_1074.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_1074.RULE"
+            }
+          ],
+          "identifier": "gpl_2_0-20789449-d01b-5c54-146e-d0c746e6368a"
+        }
+      ],
+      "license_clues": [],
+      "percentage_of_license_text": 50.0,
+      "copyrights": [
+        {
+          "copyright": "Copyright (c) IBM Corp.",
+          "start_line": 1,
+          "end_line": 1
+        },
+        {
+          "copyright": "Copyright (c) IBM Corp.",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "holders": [
+        {
+          "holder": "IBM Corp.",
+          "start_line": 1,
+          "end_line": 1
+        },
+        {
+          "holder": "IBM Corp.",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "authors": [],
+      "consolidated_to": [
+        "corp_ibm_1"
+      ],
+      "files_count": 0,
+      "dirs_count": 0,
+      "size_count": 0,
+      "scan_errors": []
+    }
+  ]
+}

@@ -1,0 +1,215 @@
+{
+  "type": "maven",
+  "namespace": "org.codehaus.plexus",
+  "name": "plexus",
+  "version": "1.0.11",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": "Java",
+  "description": "Plexus",
+  "release_date": null,
+  "parties": [
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Jason van Zyl",
+      "email": "jason@maven.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Pete Kazmier",
+      "email": null,
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "James Taylor",
+      "email": "james@jamestaylor.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Dan Diephouse",
+      "email": "dan@envoisolutions.com",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Kasper Nielsen",
+      "email": "apache@kav.dk",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Ben Walding",
+      "email": "bwalding@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Mark Wilkinson",
+      "email": "mhw@kremvax.net",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Michal Maczka",
+      "email": "mmaczka@interia.pl",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Emmanuel Venisse",
+      "email": "evenisse@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Trygve Laugstol",
+      "email": "trygvis@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Kenney Westerhof",
+      "email": "kenney@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Carlos Sanchez",
+      "email": "carlos@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Brett Porter",
+      "email": "brett@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "John Casey",
+      "email": "jdcasey@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Andrew Williams",
+      "email": "andy@handyande.co.uk",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Rahul Thakur",
+      "email": "rahul.thakur.xdev@gmail.com",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Joakim Erdfelt",
+      "email": "joakim@erdfelt.com",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Olivier Lamy",
+      "email": "olamy@codehaus.org",
+      "url": null
+    },
+    {
+      "type": "organization",
+      "role": "owner",
+      "name": "Codehaus",
+      "email": null,
+      "url": "http://www.codehaus.org/"
+    }
+  ],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": "http://jira.codehaus.org/browse/PLX",
+  "code_view_url": "http://fisheye.codehaus.org/browse/plexus/pom/trunk/",
+  "vcs_url": "svn+http://svn.codehaus.org/plexus/pom/trunk/",
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "apache-2.0",
+  "declared_license_expression_spdx": "Apache-2.0",
+  "license_detections": [
+    {
+      "license_expression": "apache-2.0",
+      "license_expression_spdx": "Apache-2.0",
+      "matches": [
+        {
+          "license_expression": "apache-2.0",
+          "spdx_license_expression": "Apache-2.0",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 2,
+          "matcher": "1-hash",
+          "score": 100.0,
+          "matched_length": 18,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "apache-2.0_40.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/apache-2.0_40.RULE",
+          "matched_text": "- name: The Apache Software License, Version 2.0\n  url: http://www.apache.org/licenses/LICENSE-2.0.txt"
+        }
+      ],
+      "identifier": "apache_2_0-bfa9e97a-62d3-0076-c881-8443e5e95192"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "- name: The Apache Software License, Version 2.0\n  url: http://www.apache.org/licenses/LICENSE-2.0.txt\n",
+  "notice_text": null,
+  "source_packages": [
+    "pkg:maven/org.codehaus.plexus/plexus@1.0.11?classifier=sources"
+  ],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {},
+  "dependencies": [
+    {
+      "purl": "pkg:maven/junit/junit@3.8.1",
+      "extracted_requirement": "3.8.1",
+      "scope": "test",
+      "is_runtime": false,
+      "is_optional": true,
+      "is_resolved": true,
+      "is_direct": true,
+      "resolved_package": {},
+      "extra_data": {}
+    }
+  ],
+  "repository_homepage_url": "https://repo1.maven.org/maven2/org/codehaus/plexus/plexus/1.0.11/",
+  "repository_download_url": "https://repo1.maven.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.jar",
+  "api_data_url": "https://repo1.maven.org/maven2/org/codehaus/plexus/plexus/1.0.11/plexus-1.0.11.pom",
+  "datasource_id": "maven_pom",
+  "purl": "pkg:maven/org.codehaus.plexus/plexus@1.0.11"
+}

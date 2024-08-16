@@ -1,0 +1,134 @@
+{
+  "files": [
+    {
+      "path": "srp",
+      "type": "directory",
+      "license_detections": [],
+      "declared_license_expression": null,
+      "declared_license_expression_spdx": null,
+      "holders": [],
+      "copyrights": [],
+      "authors": [],
+      "package_data": [],
+      "scan_errors": []
+    },
+    {
+      "path": "srp/build.info",
+      "type": "file",
+      "license_detections": [],
+      "declared_license_expression": null,
+      "declared_license_expression_spdx": null,
+      "holders": [],
+      "copyrights": [],
+      "authors": [],
+      "package_data": [],
+      "scan_errors": []
+    },
+    {
+      "path": "srp/srp_lib.c",
+      "type": "file",
+      "license_detections": [
+        {
+          "license_expression": "openssl",
+          "detection_log": [
+            "not-combined"
+          ],
+          "matches": [
+            {
+              "license_expression": "openssl",
+              "score": 100.0,
+              "short_name": "OpenSSL License",
+              "category": "Permissive",
+              "owner": "OpenSSL",
+              "homepage_url": "http://openssl.org/source/license.html",
+              "text_url": "",
+              "reference_url": "https://scancode-licensedb.aboutcode.org/openssl",
+              "spdx_license_key": "",
+              "spdx_url": "",
+              "start_line": 4,
+              "end_line": 7,
+              "rule_identifier": "openssl_8.RULE",
+              "licenses": [
+                {
+                  "key": "openssl"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "declared_license_expression": null,
+      "declared_license_expression_spdx": null,
+      "holders": [
+        {
+          "holder": "The OpenSSL Project",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "copyrights": [
+        {
+          "copyright": "Copyright 2011-2016 The OpenSSL Project",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "authors": [],
+      "package_data": [],
+      "scan_errors": []
+    },
+    {
+      "path": "srp/srp_vfy.c",
+      "type": "file",
+      "license_detections": [
+        {
+          "license_expression": "openssl",
+          "detection_log": [
+            "not-combined"
+          ],
+          "matches": [
+            {
+              "license_expression": "openssl",
+              "score": 100.0,
+              "short_name": "OpenSSL License",
+              "category": "Permissive",
+              "owner": "OpenSSL",
+              "homepage_url": "http://openssl.org/source/license.html",
+              "text_url": "",
+              "reference_url": "https://scancode-licensedb.aboutcode.org/openssl",
+              "spdx_license_key": "",
+              "spdx_url": "",
+              "start_line": 4,
+              "end_line": 7,
+              "rule_identifier": "openssl_8.RULE",
+              "licenses": [
+                {
+                  "key": "openssl"
+                }
+              ]
+            }
+          ]
+        }
+      ],
+      "declared_license_expression": null,
+      "declared_license_expression_spdx": null,
+      "holders": [
+        {
+          "holder": "The OpenSSL Project",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "copyrights": [
+        {
+          "copyright": "Copyright 2011-2016 The OpenSSL Project",
+          "start_line": 2,
+          "end_line": 2
+        }
+      ],
+      "authors": [],
+      "package_data": [],
+      "scan_errors": []
+    }
+  ]
+}

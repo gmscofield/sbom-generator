@@ -1,0 +1,92 @@
+{
+  "type": "maven",
+  "namespace": "junit",
+  "name": "junit",
+  "version": "4.4",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": "Java",
+  "description": "JUnit\nJUnit is a regression testing framework written by Erich Gamma and Kent Beck. It is used by the developer who implements unit tests in Java.",
+  "release_date": null,
+  "parties": [
+    {
+      "type": "organization",
+      "role": "owner",
+      "name": "JUnit",
+      "email": null,
+      "url": "http://www.junit.org"
+    }
+  ],
+  "keywords": [],
+  "homepage_url": "http://junit.org",
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": "http://junit.cvs.sourceforge.net/junit/",
+  "vcs_url": "http://junit.cvs.sourceforge.net/junit/",
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "cpl-1.0",
+  "declared_license_expression_spdx": "CPL-1.0",
+  "license_detections": [
+    {
+      "license_expression": "cpl-1.0",
+      "license_expression_spdx": "CPL-1.0",
+      "matches": [
+        {
+          "license_expression": "cpl-1.0",
+          "spdx_license_expression": "CPL-1.0",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 6,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "cpl-1.0_5.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/cpl-1.0_5.RULE",
+          "matched_text": "- name: Common Public License Version 1.0"
+        },
+        {
+          "license_expression": "cpl-1.0",
+          "spdx_license_expression": "CPL-1.0",
+          "from_file": null,
+          "start_line": 2,
+          "end_line": 2,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 8,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "cpl-1.0_10.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/cpl-1.0_10.RULE",
+          "matched_text": "  url: http://www.opensource.org/licenses/cpl1.0.txt"
+        }
+      ],
+      "identifier": "cpl_1_0-f49145e8-d9e9-2a1a-5e83-1d459e6693dd"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "- name: Common Public License Version 1.0\n  url: http://www.opensource.org/licenses/cpl1.0.txt\n",
+  "notice_text": null,
+  "source_packages": [
+    "pkg:maven/junit/junit@4.4?classifier=sources"
+  ],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {},
+  "dependencies": [],
+  "repository_homepage_url": "https://repo1.maven.org/maven2/junit/junit/4.4/",
+  "repository_download_url": "https://repo1.maven.org/maven2/junit/junit/4.4/junit-4.4.jar",
+  "api_data_url": "https://repo1.maven.org/maven2/junit/junit/4.4/junit-4.4.pom",
+  "datasource_id": "maven_pom",
+  "purl": "pkg:maven/junit/junit@4.4"
+}

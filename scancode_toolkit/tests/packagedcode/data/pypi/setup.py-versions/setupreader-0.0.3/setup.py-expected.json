@@ -1,0 +1,100 @@
+[
+  {
+    "type": "pypi",
+    "namespace": null,
+    "name": "setupreader",
+    "version": "0.0.3",
+    "qualifiers": {},
+    "subpath": null,
+    "primary_language": "Python",
+    "description": "retrieve package specification from setup.py",
+    "release_date": null,
+    "parties": [
+      {
+        "type": "person",
+        "role": "author",
+        "name": "Lars van de Kerkhof",
+        "email": "lars@permanentmarkers.nl",
+        "url": null
+      }
+    ],
+    "keywords": [],
+    "homepage_url": "https://github.com/specialunderwear/setupreader",
+    "download_url": null,
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": null,
+    "holder": null,
+    "declared_license_expression": "gpl-1.0-plus",
+    "declared_license_expression_spdx": "GPL-1.0-or-later",
+    "license_detections": [
+      {
+        "license_expression": "gpl-1.0-plus",
+        "license_expression_spdx": "GPL-1.0-or-later",
+        "matches": [
+          {
+            "license_expression": "gpl-1.0-plus",
+            "spdx_license_expression": "GPL-1.0-or-later",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 50.0,
+            "matched_length": 1,
+            "match_coverage": 100.0,
+            "rule_relevance": 50,
+            "rule_identifier": "gpl_bare_word_only.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl_bare_word_only.RULE",
+            "matched_text": "GPL"
+          }
+        ],
+        "identifier": "gpl_1_0_plus-473308ff-72ce-7e72-b3a9-5b1cc6680abb"
+      }
+    ],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": "license: GPL\n",
+    "notice_text": null,
+    "source_packages": [],
+    "file_references": [],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {},
+    "dependencies": [
+      {
+        "purl": "pkg:pypi/setuptools",
+        "extracted_requirement": null,
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/mock",
+        "extracted_requirement": null,
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      }
+    ],
+    "repository_homepage_url": "https://pypi.org/project/setupreader",
+    "repository_download_url": "https://pypi.org/packages/source/s/setupreader/setupreader-0.0.3.tar.gz",
+    "api_data_url": "https://pypi.org/pypi/setupreader/0.0.3/json",
+    "datasource_id": "pypi_setup_py",
+    "purl": "pkg:pypi/setupreader@0.0.3"
+  }
+]

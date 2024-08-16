@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "perl-socket-getaddrinfo",
+  "version": "0.22-r3",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "Perl interface for get{addr,name}info(3)",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-1.0-plus OR artistic-perl-1.0",
+  "declared_license_expression_spdx": "GPL-1.0-or-later OR Artistic-1.0-Perl",
+  "license_detections": [
+    {
+      "license_expression": "gpl-1.0-plus OR artistic-perl-1.0",
+      "license_expression_spdx": "GPL-1.0-or-later OR Artistic-1.0-Perl",
+      "matches": [
+        {
+          "license_expression": "gpl-1.0-plus OR artistic-perl-1.0",
+          "spdx_license_expression": "GPL-1.0-or-later OR Artistic-1.0-Perl",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 10,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-gpl_1_0_plus_or_artistic_perl_1_0-535d84b5d1aa6e65995199385dd4e21954d8d8ba",
+          "rule_url": null,
+          "matched_text": "gpl-1.0-or-later OR artistic-1.0-perl"
+        }
+      ],
+      "identifier": "gpl_1_0_plus_or_artistic_perl_1_0-e8b8391b-a631-ad82-c771-fb65500b961e"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-1.0-or-later OR Artistic-1.0-Perl",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://cpan.metacpan.org/authors/id/P/PE/PEVANS/Socket-GetAddrInfo-0.22.tar.gz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "Socket-GetAddrInfo-0.22.tar.gz",
+        "sha512": "3117ad5931dd116f45afa041b7aad4506382c4359b67e61564affba6f34fe14db5dbe0dc0a1bf4c0b680847bda58958604907ff0339d500728b44301cf1fe554"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/perl-socket-getaddrinfo@0.22-r3"
+}

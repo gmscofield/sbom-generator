@@ -1,0 +1,14 @@
+{
+  "type": "osgi",
+  "datasource_id": "java_osgi_manifest",
+  "namespace": null,
+  "name": "org.codehaus.janino.janino",
+  "version": "3.0.8",
+  "description": "janino\nJanino is a super-small, super-fast Java compiler.",
+  "extracted_license_statement": "https://raw.githubusercontent.com/janino-compiler/janino/master/LICENSE",
+  "copyright": null,
+  "homepage_url": null,
+  "parties": [],
+  "vcs_url": null,
+  "code_view_url": null
+}

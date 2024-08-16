@@ -1,0 +1,88 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "kamailio",
+  "version": "5.4.5-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "Open Source SIP Server",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-2.0-plus",
+  "declared_license_expression_spdx": "GPL-2.0-or-later",
+  "license_detections": [
+    {
+      "license_expression": "gpl-2.0-plus",
+      "license_expression_spdx": "GPL-2.0-or-later",
+      "matches": [
+        {
+          "license_expression": "gpl-2.0-plus",
+          "spdx_license_expression": "GPL-2.0-or-later",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-hash",
+          "score": 50.0,
+          "matched_length": 5,
+          "match_coverage": 100.0,
+          "rule_relevance": 50,
+          "rule_identifier": "spdx_license_id_gpl-2.0-or-later_for_gpl-2.0-plus.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/spdx_license_id_gpl-2.0-or-later_for_gpl-2.0-plus.RULE",
+          "matched_text": "gpl-2.0-or-later"
+        }
+      ],
+      "identifier": "gpl_2_0_plus-5b1e08b4-d11a-8dda-a3ae-2a8e74495478"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-2.0-or-later",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": "kamailio-5.4.5.tar.gz",
+        "url": "https://github.com/kamailio/kamailio/archive/5.4.5.tar.gz"
+      },
+      {
+        "file_name": "kamailio.initd",
+        "url": null
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "kamailio-5.4.5.tar.gz",
+        "sha512": "34ad79d4d954499b3711eb12afe1c753e42c6c59d2085d2495237ecce287255510271b61284d79c0db587b75eb9adbc462c4f5470c60fda41de012f1dc41aa7b"
+      },
+      {
+        "file_name": "kamailio.initd",
+        "sha512": "0c87bfb78481568c03e603049eb8597a90d24ae2941fc81694181b2326fa9db89fbddaaa3cf08c7bc2f5fa0e7ffac4cf4e2d010d08c4faa6cf6df98593432539"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/kamailio@5.4.5-r0"
+}

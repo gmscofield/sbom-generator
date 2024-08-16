@@ -1,0 +1,19 @@
+{
+  "type": "jar",
+  "datasource_id": "java_jar_manifest",
+  "namespace": null,
+  "name": "Datalogic SDK",
+  "version": "1.5",
+  "description": "",
+  "extracted_license_statement": null,
+  "copyright": null,
+  "homepage_url": null,
+  "parties": [
+    {
+      "role": "vendor",
+      "name": "Datalogic ADC Inc."
+    }
+  ],
+  "vcs_url": null,
+  "code_view_url": null
+}

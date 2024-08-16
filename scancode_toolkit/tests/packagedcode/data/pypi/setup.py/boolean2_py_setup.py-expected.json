@@ -1,0 +1,114 @@
+[
+  {
+    "type": "pypi",
+    "namespace": null,
+    "name": "boolean.py",
+    "version": "1.2",
+    "qualifiers": {},
+    "subpath": null,
+    "primary_language": "Python",
+    "description": "Boolean Algreba",
+    "release_date": null,
+    "parties": [
+      {
+        "type": "person",
+        "role": "author",
+        "name": "Sebastian Kraemer",
+        "email": "basti.kr@gmail.com",
+        "url": null
+      }
+    ],
+    "keywords": [
+      "boolean expression",
+      "boolean algebra",
+      "logic",
+      "expression parser",
+      "Development Status :: 4 - Beta",
+      "Intended Audience :: Developers",
+      "Operating System :: OS Independent",
+      "Programming Language :: Python",
+      "Programming Language :: Python :: 2.7",
+      "Programming Language :: Python :: 3",
+      "Topic :: Scientific/Engineering :: Mathematics",
+      "Topic :: Software Development :: Compilers",
+      "Topic :: Software Development :: Libraries",
+      "Topic :: Utilities"
+    ],
+    "homepage_url": "https://github.com/bastikr/boolean.py",
+    "download_url": null,
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": null,
+    "holder": null,
+    "declared_license_expression": "bsd-new",
+    "declared_license_expression_spdx": "BSD-3-Clause",
+    "license_detections": [
+      {
+        "license_expression": "bsd-new",
+        "license_expression_spdx": "BSD-3-Clause",
+        "matches": [
+          {
+            "license_expression": "bsd-new",
+            "spdx_license_expression": "BSD-3-Clause",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 90.0,
+            "matched_length": 3,
+            "match_coverage": 100.0,
+            "rule_relevance": 90,
+            "rule_identifier": "bsd-new_708.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/bsd-new_708.RULE",
+            "matched_text": "revised BSD license"
+          }
+        ],
+        "identifier": "bsd_new-9d4149ba-60ed-9e49-34a8-20576feb3295"
+      },
+      {
+        "license_expression": "bsd-new",
+        "license_expression_spdx": "BSD-3-Clause",
+        "matches": [
+          {
+            "license_expression": "bsd-new",
+            "spdx_license_expression": "BSD-3-Clause",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 99.0,
+            "matched_length": 5,
+            "match_coverage": 100.0,
+            "rule_relevance": 99,
+            "rule_identifier": "pypi_bsd_license.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/pypi_bsd_license.RULE",
+            "matched_text": "- 'License :: OSI Approved :: BSD License'"
+          }
+        ],
+        "identifier": "bsd_new-f4e99f86-00ab-18d9-a65d-a3a12767dcf5"
+      }
+    ],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": "license: revised BSD license\nclassifiers:\n  - 'License :: OSI Approved :: BSD License'\n",
+    "notice_text": null,
+    "source_packages": [],
+    "file_references": [],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {},
+    "dependencies": [],
+    "repository_homepage_url": "https://pypi.org/project/boolean.py",
+    "repository_download_url": "https://pypi.org/packages/source/b/boolean.py/boolean.py-1.2.tar.gz",
+    "api_data_url": "https://pypi.org/pypi/boolean.py/1.2/json",
+    "datasource_id": "pypi_setup_py",
+    "purl": "pkg:pypi/boolean.py@1.2"
+  }
+]

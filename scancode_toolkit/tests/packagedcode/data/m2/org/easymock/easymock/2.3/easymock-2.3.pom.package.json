@@ -1,0 +1,81 @@
+{
+  "type": "maven",
+  "namespace": "org.easymock",
+  "name": "easymock",
+  "version": "2.3",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": "Java",
+  "description": "EasyMock\nEasyMock provides Mock Objects for interfaces in JUnit tests by generating them on the fly using Java's proxy mechanism",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": "http://www.easymock.org",
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": "http://cvs.sourceforge.net/viewcvs.py/easymock",
+  "vcs_url": "cvs+pserver:easymock.cvs.sourceforge.net:/cvsroot/easymock:easymock",
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "mit",
+  "declared_license_expression_spdx": "MIT",
+  "license_detections": [
+    {
+      "license_expression": "mit",
+      "license_expression_spdx": "MIT",
+      "matches": [
+        {
+          "license_expression": "mit",
+          "spdx_license_expression": "MIT",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 3,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "mit_1106.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/mit_1106.RULE",
+          "matched_text": "- name: MIT License"
+        }
+      ],
+      "identifier": "mit-8b394b05-a8d3-7669-2b85-8e2313a00b22"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "- name: MIT License\n  url: http://www.easymock.org/License.html\n",
+  "notice_text": null,
+  "source_packages": [
+    "pkg:maven/org.easymock/easymock@2.3?classifier=sources"
+  ],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {},
+  "dependencies": [
+    {
+      "purl": "pkg:maven/junit/junit@4.3.1",
+      "extracted_requirement": "4.3.1",
+      "scope": "test",
+      "is_runtime": false,
+      "is_optional": true,
+      "is_resolved": true,
+      "is_direct": true,
+      "resolved_package": {},
+      "extra_data": {}
+    }
+  ],
+  "repository_homepage_url": "https://repo1.maven.org/maven2/org/easymock/easymock/2.3/",
+  "repository_download_url": "https://repo1.maven.org/maven2/org/easymock/easymock/2.3/easymock-2.3.jar",
+  "api_data_url": "https://repo1.maven.org/maven2/org/easymock/easymock/2.3/easymock-2.3.pom",
+  "datasource_id": "maven_pom",
+  "purl": "pkg:maven/org.easymock/easymock@2.3"
+}

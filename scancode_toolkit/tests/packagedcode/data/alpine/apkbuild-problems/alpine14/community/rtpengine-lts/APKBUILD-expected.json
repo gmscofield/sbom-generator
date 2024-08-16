@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "rtpengine-lts",
+  "version": "5.10.43-r$((0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "Kernel module for rtpengine",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "gpl-3.0",
+  "declared_license_expression_spdx": "GPL-3.0-only",
+  "license_detections": [
+    {
+      "license_expression": "gpl-3.0",
+      "license_expression_spdx": "GPL-3.0-only",
+      "matches": [
+        {
+          "license_expression": "gpl-3.0",
+          "spdx_license_expression": "GPL-3.0-only",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-hash",
+          "score": 50.0,
+          "matched_length": 4,
+          "match_coverage": 100.0,
+          "rule_relevance": 50,
+          "rule_identifier": "spdx_license_id_gpl-3.0-only_for_gpl-3.0.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/spdx_license_id_gpl-3.0-only_for_gpl-3.0.RULE",
+          "matched_text": "gpl-3.0-only"
+        }
+      ],
+      "identifier": "gpl_3_0-c40e1583-9bea-e122-2576-a76192b84364"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "GPL-3.0-only",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": "rtpengine-lts-9.0.1.10.tar.gz",
+        "url": "https://github.com/sipwise/rtpengine/archive/mr9.0.1.10.tar.gz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "rtpengine-lts-9.0.1.10.tar.gz",
+        "sha512": "ee870f0cc1f3a2b860dcb9a0e8519c535c5fc82efc2ef75022e3f09bcc75df2d9024390f474765d5a711ee1e0af90441764649f14c98d1c8b3ab2e93ab7423da"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/rtpengine-lts@5.10.43-r%24%28%280"
+}

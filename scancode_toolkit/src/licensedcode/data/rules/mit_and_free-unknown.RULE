@@ -1,0 +1,10 @@
+---
+license_expression: mit AND free-unknown
+is_license_notice: yes
+is_deprecated: yes
+referenced_filenames:
+    - LICENSE
+---
+
+All the files in this distribution are covered under either the MIT
+license (see the file LICENSE) except some files mentioned below.

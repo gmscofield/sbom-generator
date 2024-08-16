@@ -1,0 +1,12 @@
+---
+license_expression: other-permissive
+is_license_text: yes
+is_deprecated: yes
+notes: 'Replaced by license: fbm'
+---
+
+* Permission is granted to use this file in whole or in
+ * part for any purpose, educational, recreational or commercial,
+ * provided that this copyright notice is retained unchanged.
+ * This software is available to all free of charge by anonymous
+ * FTP and in the UUNET archives.

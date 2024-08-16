@@ -1,0 +1,194 @@
+{
+  "packages": [],
+  "dependencies": [],
+  "license_detections": [
+    {
+      "identifier": "bsd_original_uc-f28cb4d4-6336-ee60-f186-4c1929d3a4b0",
+      "license_expression": "bsd-original-uc",
+      "license_expression_spdx": "BSD-4-Clause-UC",
+      "detection_count": 1,
+      "reference_matches": [
+        {
+          "license_expression": "bsd-original-uc",
+          "license_expression_spdx": "BSD-4-Clause-UC",
+          "from_file": "basic.tgz/basic/dir2/subdir/bcopy.s",
+          "start_line": 25,
+          "end_line": 51,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 243,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "bsd-original-uc_3.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/bsd-original-uc_3.RULE"
+        }
+      ]
+    },
+    {
+      "identifier": "gpl_2_0_or_bsd_new-1aafbf52-fc7a-3ded-e4ce-3a96e276a0f9",
+      "license_expression": "gpl-2.0 OR bsd-new",
+      "license_expression_spdx": "GPL-2.0-only OR BSD-3-Clause",
+      "detection_count": 1,
+      "reference_matches": [
+        {
+          "license_expression": "gpl-2.0 OR bsd-new",
+          "license_expression_spdx": "GPL-2.0-only OR BSD-3-Clause",
+          "from_file": "basic.tgz/basic/main.c",
+          "start_line": 5,
+          "end_line": 12,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 50,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "gpl-2.0_or_bsd-new_aes_1.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_or_bsd-new_aes_1.RULE"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "basic.tgz/basic/dir2/subdir/bcopy.s",
+      "type": "file",
+      "name": "bcopy.s",
+      "base_name": "bcopy",
+      "extension": ".s",
+      "size": 32452,
+      "sha1": "99f20eafc7b7e1c8e21bced55c8cdd05339bec77",
+      "md5": "e1c66adaf6b8aa90e348668ac4869a61",
+      "sha256": "230de4eee886fa5ac0b056242ee0a9e90ac1d2fa425b14219902a9839fb4d59e",
+      "mime_type": "text/x-c",
+      "file_type": "C source, ASCII text, with CRLF line terminators",
+      "programming_language": "GAS",
+      "is_binary": false,
+      "is_text": true,
+      "is_archive": false,
+      "is_media": false,
+      "is_source": true,
+      "is_script": false,
+      "package_data": [],
+      "for_packages": [],
+      "detected_license_expression": "bsd-original-uc",
+      "detected_license_expression_spdx": "BSD-4-Clause-UC",
+      "license_detections": [
+        {
+          "license_expression": "bsd-original-uc",
+          "license_expression_spdx": "BSD-4-Clause-UC",
+          "matches": [
+            {
+              "license_expression": "bsd-original-uc",
+              "spdx_license_expression": "BSD-4-Clause-UC",
+              "from_file": "basic.tgz/basic/dir2/subdir/bcopy.s",
+              "start_line": 25,
+              "end_line": 51,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 243,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "bsd-original-uc_3.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/bsd-original-uc_3.RULE"
+            }
+          ],
+          "identifier": "bsd_original_uc-f28cb4d4-6336-ee60-f186-4c1929d3a4b0"
+        }
+      ],
+      "license_clues": [],
+      "percentage_of_license_text": 4.82,
+      "copyrights": [
+        {
+          "copyright": "Copyright (c) 1993 The Regents of the University of California",
+          "start_line": 22,
+          "end_line": 22
+        }
+      ],
+      "holders": [
+        {
+          "holder": "The Regents of the University of California",
+          "start_line": 22,
+          "end_line": 22
+        }
+      ],
+      "authors": [
+        {
+          "author": "the University of California, Berkeley and its contributors",
+          "start_line": 35,
+          "end_line": 36
+        }
+      ],
+      "files_count": 0,
+      "dirs_count": 0,
+      "size_count": 0,
+      "scan_errors": []
+    },
+    {
+      "path": "basic.tgz/basic/main.c",
+      "type": "file",
+      "name": "main.c",
+      "base_name": "main",
+      "extension": ".c",
+      "size": 1940,
+      "sha1": "35017ed9762bdc9d16054a40ceefdda8b362083a",
+      "md5": "8d0a3b3fe1c96a49af2a66040193291b",
+      "sha256": "c6f6fb075abb1414982b4aaea37093d9120ce28fea1484ca7e275c262ec09b1c",
+      "mime_type": "text/x-c",
+      "file_type": "C source, ASCII text",
+      "programming_language": "C",
+      "is_binary": false,
+      "is_text": true,
+      "is_archive": false,
+      "is_media": false,
+      "is_source": true,
+      "is_script": false,
+      "package_data": [],
+      "for_packages": [],
+      "detected_license_expression": "gpl-2.0 OR bsd-new",
+      "detected_license_expression_spdx": "GPL-2.0-only OR BSD-3-Clause",
+      "license_detections": [
+        {
+          "license_expression": "gpl-2.0 OR bsd-new",
+          "license_expression_spdx": "GPL-2.0-only OR BSD-3-Clause",
+          "matches": [
+            {
+              "license_expression": "gpl-2.0 OR bsd-new",
+              "spdx_license_expression": "GPL-2.0-only OR BSD-3-Clause",
+              "from_file": "basic.tgz/basic/main.c",
+              "start_line": 5,
+              "end_line": 12,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 50,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "gpl-2.0_or_bsd-new_aes_1.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_or_bsd-new_aes_1.RULE"
+            }
+          ],
+          "identifier": "gpl_2_0_or_bsd_new-1aafbf52-fc7a-3ded-e4ce-3a96e276a0f9"
+        }
+      ],
+      "license_clues": [],
+      "percentage_of_license_text": 19.01,
+      "copyrights": [
+        {
+          "copyright": "Copyright (c) 2006, Jouni Malinen <j@w1.fi>",
+          "start_line": 3,
+          "end_line": 3
+        }
+      ],
+      "holders": [
+        {
+          "holder": "Jouni Malinen",
+          "start_line": 3,
+          "end_line": 3
+        }
+      ],
+      "authors": [],
+      "files_count": 0,
+      "dirs_count": 0,
+      "size_count": 0,
+      "scan_errors": []
+    }
+  ]
+}

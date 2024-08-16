@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "dcontainers",
+  "version": "0.8.0_alpha19-r1",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "Containers backed by std.experimental.allocator",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "boost-1.0",
+  "declared_license_expression_spdx": "BSL-1.0",
+  "license_detections": [
+    {
+      "license_expression": "boost-1.0",
+      "license_expression_spdx": "BSL-1.0",
+      "matches": [
+        {
+          "license_expression": "boost-1.0",
+          "spdx_license_expression": "BSL-1.0",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-hash",
+          "score": 50.0,
+          "matched_length": 3,
+          "match_coverage": 100.0,
+          "rule_relevance": 50,
+          "rule_identifier": "boost-1.0_48.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/boost-1.0_48.RULE",
+          "matched_text": "bsl-1.0"
+        }
+      ],
+      "identifier": "boost_1_0-12dac15d-d5d2-667c-8632-205982e11078"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "BSL-1.0",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://github.com/dlang-community/containers/archive/v0.8.0-alpha.19/containers-0.8.0-alpha.19.tar.gz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "containers-0.8.0-alpha.19.tar.gz",
+        "sha512": "ef415e2bf7829e05c458cee0e41b6fc5768805a8dee332fb6a01a72e1e723f240f183cd1fd5ed74848cc4ea860b0746dca1c5dee13d37f819f0025da99098c4a"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/dcontainers@0.8.0_alpha19-r1"
+}

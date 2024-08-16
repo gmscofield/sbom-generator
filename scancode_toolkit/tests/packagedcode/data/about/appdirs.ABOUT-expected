@@ -1,0 +1,87 @@
+[
+  {
+    "type": "about",
+    "namespace": null,
+    "name": "appdirs",
+    "version": "1.4.3",
+    "qualifiers": {},
+    "subpath": null,
+    "primary_language": null,
+    "description": null,
+    "release_date": null,
+    "parties": [
+      {
+        "type": "person",
+        "role": "owner",
+        "name": "ActiveState",
+        "email": null,
+        "url": null
+      }
+    ],
+    "keywords": [],
+    "homepage_url": "https://pypi.python.org/pypi/appdirs",
+    "download_url": "https://pypi.python.org/packages/56/eb/810e700ed1349edde4cbdc1b2a21e28cdf115f9faf263f6bbf8447c1abf3/appdirs-1.4.3-py2.py3-none-any.whl#md5=9ed4b51c9611775c3078b3831072e153",
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": "Copyright (c) 2010 ActiveState Software Inc.",
+    "holder": "ActiveState Software Inc.",
+    "declared_license_expression": "mit",
+    "declared_license_expression_spdx": "MIT",
+    "license_detections": [
+      {
+        "license_expression": "mit",
+        "license_expression_spdx": "MIT",
+        "matches": [
+          {
+            "license_expression": "mit",
+            "spdx_license_expression": "MIT",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-spdx-id",
+            "score": 100.0,
+            "matched_length": 1,
+            "match_coverage": 100.0,
+            "rule_relevance": 100,
+            "rule_identifier": "spdx-license-identifier-mit-1b937028f397e2c5fe4eb6a0abd781ab80f9eeff",
+            "rule_url": null,
+            "matched_text": "mit"
+          }
+        ],
+        "identifier": "mit-704ced38-ea60-e53b-6c20-390fe781b1c3"
+      }
+    ],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": "mit",
+    "notice_text": null,
+    "source_packages": [],
+    "file_references": [
+      {
+        "path": "appdirs-1.4.3-py2.py3-none-any.whl",
+        "size": 0,
+        "sha1": null,
+        "md5": null,
+        "sha256": null,
+        "sha512": null,
+        "extra_data": {}
+      }
+    ],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {},
+    "dependencies": [],
+    "repository_homepage_url": null,
+    "repository_download_url": null,
+    "api_data_url": null,
+    "datasource_id": "about_file",
+    "purl": "pkg:about/appdirs@1.4.3"
+  }
+]

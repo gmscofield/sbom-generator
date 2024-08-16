@@ -1,0 +1,111 @@
+[
+  {
+    "type": "pypi",
+    "namespace": null,
+    "name": "pyup-django",
+    "version": "0.4.0",
+    "qualifiers": {},
+    "subpath": null,
+    "primary_language": "Python",
+    "description": "pyup-django checks your installed dependencies for known security vulnerabilities and displays them in the admin area.\n[![PyPi](https://img.shields.io/pypi/v/pyup-django.svg)](https://pypi.python.org/pypi/pyup-django)\n[![Travis](https://img.shields.io/travis/pyupio/pyup-django.svg)](https://travis-ci.org/pyupio/pyup-django)\n\n# About\n\nDisplays a red warning banner if you are running an insecure Django release.\n\n![insecure](insecure.png)\n\n# Installation\n\nInstall `pyup-django` with pip:\n\n```\npip install pyup-django\n```\n\nand add it to your `INSTALLED_APPS`, before `django.contrib.admin`\n\n```\nINSTALLED_APPS = [\n    'pyup_django',\n    'django.contrib.admin',\n]\n```\n\n# How does it work?\n\n`pyup-django` extends the admin base template and checks [https://pyup.io/api/v1/insecure/django/](https://pyup.io/api/v1/insecure/django/)\nif the currently installed Django release is insecure.\n\nRequests to the API are cached for 24 hours and won't leak any sensitive\ninformation other than the servers IP address.\n\n\n# Support\n\nIf you are using `pyup-django` in one of your projects, please consider getting a paid\n[pyup.io](https://pyup.io) account. This is what makes projects like this possible.",
+    "release_date": null,
+    "parties": [
+      {
+        "type": "person",
+        "role": "author",
+        "name": "pyup.io",
+        "email": "support@pyup.io",
+        "url": null
+      }
+    ],
+    "keywords": [
+      "pyup_django",
+      "Development Status :: 2 - Pre-Alpha",
+      "Intended Audience :: Developers",
+      "Natural Language :: English",
+      "Programming Language :: Python :: 2",
+      "Programming Language :: Python :: 2.6",
+      "Programming Language :: Python :: 2.7",
+      "Programming Language :: Python :: 3",
+      "Programming Language :: Python :: 3.3",
+      "Programming Language :: Python :: 3.4",
+      "Programming Language :: Python :: 3.5"
+    ],
+    "homepage_url": "https://github.com/pyupio/pyup-django",
+    "download_url": null,
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": null,
+    "holder": null,
+    "declared_license_expression": "mit",
+    "declared_license_expression_spdx": "MIT",
+    "license_detections": [
+      {
+        "license_expression": "mit",
+        "license_expression_spdx": "MIT",
+        "matches": [
+          {
+            "license_expression": "mit",
+            "spdx_license_expression": "MIT",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 100.0,
+            "matched_length": 2,
+            "match_coverage": 100.0,
+            "rule_relevance": 100,
+            "rule_identifier": "mit_14.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/mit_14.RULE",
+            "matched_text": "MIT license"
+          }
+        ],
+        "identifier": "mit-9967e727-165e-9bb5-f090-7de5e47a3929"
+      },
+      {
+        "license_expression": "mit",
+        "license_expression_spdx": "MIT",
+        "matches": [
+          {
+            "license_expression": "mit",
+            "spdx_license_expression": "MIT",
+            "from_file": null,
+            "start_line": 1,
+            "end_line": 1,
+            "matcher": "1-hash",
+            "score": 100.0,
+            "matched_length": 5,
+            "match_coverage": 100.0,
+            "rule_relevance": 100,
+            "rule_identifier": "pypi_mit_license.RULE",
+            "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/pypi_mit_license.RULE",
+            "matched_text": "- 'License :: OSI Approved :: MIT License'"
+          }
+        ],
+        "identifier": "mit-24a5293c-14d7-5403-efac-1a8b7532c0e8"
+      }
+    ],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": "license: MIT license\nclassifiers:\n  - 'License :: OSI Approved :: MIT License'\n",
+    "notice_text": null,
+    "source_packages": [],
+    "file_references": [],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {},
+    "dependencies": [],
+    "repository_homepage_url": "https://pypi.org/project/pyup-django",
+    "repository_download_url": "https://pypi.org/packages/source/p/pyup-django/pyup-django-0.4.0.tar.gz",
+    "api_data_url": "https://pypi.org/pypi/pyup-django/0.4.0/json",
+    "datasource_id": "pypi_sdist_pkginfo",
+    "purl": "pkg:pypi/pyup-django@0.4.0"
+  }
+]

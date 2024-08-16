@@ -1,0 +1,200 @@
+[
+  {
+    "type": "pypi",
+    "namespace": null,
+    "name": "flit",
+    "version": "2.3.0",
+    "qualifiers": {},
+    "subpath": null,
+    "primary_language": "Python",
+    "description": "A simple packaging tool for simple packages.",
+    "release_date": null,
+    "parties": [
+      {
+        "type": "person",
+        "role": "author",
+        "name": "Thomas Kluyver",
+        "email": "thomas@kluyver.me.uk",
+        "url": null
+      }
+    ],
+    "keywords": [],
+    "homepage_url": "https://github.com/takluyver/flit",
+    "download_url": null,
+    "size": null,
+    "sha1": null,
+    "md5": null,
+    "sha256": null,
+    "sha512": null,
+    "bug_tracking_url": null,
+    "code_view_url": null,
+    "vcs_url": null,
+    "copyright": null,
+    "holder": null,
+    "declared_license_expression": null,
+    "declared_license_expression_spdx": null,
+    "license_detections": [],
+    "other_license_expression": null,
+    "other_license_expression_spdx": null,
+    "other_license_detections": [],
+    "extracted_license_statement": null,
+    "notice_text": null,
+    "source_packages": [],
+    "file_references": [],
+    "is_private": false,
+    "is_virtual": false,
+    "extra_data": {
+      "python_requires": ">=3.5"
+    },
+    "dependencies": [
+      {
+        "purl": "pkg:pypi/flit-core",
+        "extracted_requirement": ">=2.3.0",
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/requests",
+        "extracted_requirement": null,
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/docutils",
+        "extracted_requirement": null,
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/pytoml",
+        "extracted_requirement": null,
+        "scope": "install",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/zipfile36",
+        "extracted_requirement": null,
+        "scope": ":python_version in '3.3 3.4 3.5'",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/sphinx",
+        "extracted_requirement": null,
+        "scope": "doc",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/sphinxcontrib-github-alt",
+        "extracted_requirement": null,
+        "scope": "doc",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/pygments-github-lexers",
+        "extracted_requirement": null,
+        "scope": "doc",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/requests-download",
+        "extracted_requirement": null,
+        "scope": "installfrom",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/testpath",
+        "extracted_requirement": null,
+        "scope": "test",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/responses",
+        "extracted_requirement": null,
+        "scope": "test",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/pytest",
+        "extracted_requirement": ">=2.7.3",
+        "scope": "test",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      },
+      {
+        "purl": "pkg:pypi/pytest-cov",
+        "extracted_requirement": null,
+        "scope": "test",
+        "is_runtime": true,
+        "is_optional": false,
+        "is_resolved": false,
+        "is_direct": true,
+        "resolved_package": {},
+        "extra_data": {}
+      }
+    ],
+    "repository_homepage_url": "https://pypi.org/project/flit",
+    "repository_download_url": "https://pypi.org/packages/source/f/flit/flit-2.3.0.tar.gz",
+    "api_data_url": "https://pypi.org/pypi/flit/2.3.0/json",
+    "datasource_id": "pypi_setup_py",
+    "purl": "pkg:pypi/flit@2.3.0"
+  }
+]

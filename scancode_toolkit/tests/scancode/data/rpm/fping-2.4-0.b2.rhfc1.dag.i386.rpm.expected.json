@@ -1,0 +1,175 @@
+{
+  "packages": [
+    {
+      "type": "rpm",
+      "namespace": null,
+      "name": "fping",
+      "version": "2.4-0.b2.rhfc1.dag",
+      "qualifiers": {},
+      "subpath": null,
+      "primary_language": null,
+      "description": "A utility to ping multiple hosts at once.\nfping is a ping-like program which uses the Internet Control Message\nProtocol (ICMP) echo request to determine if a target host is responding.\n\nfping is different from ping in that you can specify any number of hosts\non the command line, or specify a file containing the lists of hosts to\nping. Instead of trying one host until it timeouts or replies, fping will\nsend out a ping packet and move on to the next host in a round-robin fashion.\nIf a host replies, it is noted and removed from the list of hosts to check.\nIf a host does not respond within a certain time limit and/or retry limit it\nwill be considered unreachable.",
+      "release_date": null,
+      "parties": [
+        {
+          "type": null,
+          "role": "vendor",
+          "name": "Dag Apt Repository, http://dag.wieers.com/apt/",
+          "email": null,
+          "url": null
+        }
+      ],
+      "keywords": [],
+      "homepage_url": "http://www.fping.com/",
+      "download_url": null,
+      "size": null,
+      "sha1": null,
+      "md5": null,
+      "sha256": null,
+      "sha512": null,
+      "bug_tracking_url": null,
+      "code_view_url": null,
+      "vcs_url": null,
+      "copyright": null,
+      "holder": null,
+      "declared_license_expression": "unknown",
+      "declared_license_expression_spdx": "LicenseRef-scancode-unknown",
+      "license_detections": [
+        {
+          "license_expression": "unknown",
+          "license_expression_spdx": "LicenseRef-scancode-unknown",
+          "matches": [
+            {
+              "license_expression": "unknown",
+              "spdx_license_expression": "LicenseRef-scancode-unknown",
+              "from_file": "fping-2.4-0.b2.rhfc1.dag.i386.rpm",
+              "start_line": 1,
+              "end_line": 1,
+              "matcher": "5-undetected",
+              "score": 100.0,
+              "matched_length": 2,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "package-manifest-unknown-195220dbe86398dd9a8e945a50757302c09fb0dc",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/package-manifest-unknown-195220dbe86398dd9a8e945a50757302c09fb0dc",
+              "matched_text": "license distributable"
+            }
+          ],
+          "identifier": "unknown-e0ae825f-bc8a-8223-3e4c-f3680fc8ea46"
+        }
+      ],
+      "other_license_expression": null,
+      "other_license_expression_spdx": null,
+      "other_license_detections": [],
+      "extracted_license_statement": "distributable",
+      "notice_text": null,
+      "source_packages": [
+        "pkg:rpm/fping@2.4-0.b2.rhfc1.dag?arch=src"
+      ],
+      "is_private": false,
+      "is_virtual": false,
+      "extra_data": {},
+      "repository_homepage_url": null,
+      "repository_download_url": null,
+      "api_data_url": null,
+      "package_uid": "pkg:rpm/fping@2.4-0.b2.rhfc1.dag?uuid=fixed-uid-done-for-testing-5642512d1758",
+      "datafile_paths": [
+        "fping-2.4-0.b2.rhfc1.dag.i386.rpm"
+      ],
+      "datasource_ids": [
+        "rpm_archive"
+      ],
+      "purl": "pkg:rpm/fping@2.4-0.b2.rhfc1.dag"
+    }
+  ],
+  "dependencies": [],
+  "files": [
+    {
+      "path": "fping-2.4-0.b2.rhfc1.dag.i386.rpm",
+      "type": "file",
+      "package_data": [
+        {
+          "type": "rpm",
+          "namespace": null,
+          "name": "fping",
+          "version": "2.4-0.b2.rhfc1.dag",
+          "qualifiers": {},
+          "subpath": null,
+          "primary_language": null,
+          "description": "A utility to ping multiple hosts at once.\nfping is a ping-like program which uses the Internet Control Message\nProtocol (ICMP) echo request to determine if a target host is responding.\n\nfping is different from ping in that you can specify any number of hosts\non the command line, or specify a file containing the lists of hosts to\nping. Instead of trying one host until it timeouts or replies, fping will\nsend out a ping packet and move on to the next host in a round-robin fashion.\nIf a host replies, it is noted and removed from the list of hosts to check.\nIf a host does not respond within a certain time limit and/or retry limit it\nwill be considered unreachable.",
+          "release_date": null,
+          "parties": [
+            {
+              "type": null,
+              "role": "vendor",
+              "name": "Dag Apt Repository, http://dag.wieers.com/apt/",
+              "email": null,
+              "url": null
+            }
+          ],
+          "keywords": [],
+          "homepage_url": "http://www.fping.com/",
+          "download_url": null,
+          "size": null,
+          "sha1": null,
+          "md5": null,
+          "sha256": null,
+          "sha512": null,
+          "bug_tracking_url": null,
+          "code_view_url": null,
+          "vcs_url": null,
+          "copyright": null,
+          "holder": null,
+          "declared_license_expression": "unknown",
+          "declared_license_expression_spdx": "LicenseRef-scancode-unknown",
+          "license_detections": [
+            {
+              "license_expression": "unknown",
+              "license_expression_spdx": "LicenseRef-scancode-unknown",
+              "matches": [
+                {
+                  "license_expression": "unknown",
+                  "spdx_license_expression": "LicenseRef-scancode-unknown",
+                  "from_file": "fping-2.4-0.b2.rhfc1.dag.i386.rpm",
+                  "start_line": 1,
+                  "end_line": 1,
+                  "matcher": "5-undetected",
+                  "score": 100.0,
+                  "matched_length": 2,
+                  "match_coverage": 100.0,
+                  "rule_relevance": 100,
+                  "rule_identifier": "package-manifest-unknown-195220dbe86398dd9a8e945a50757302c09fb0dc",
+                  "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/package-manifest-unknown-195220dbe86398dd9a8e945a50757302c09fb0dc",
+                  "matched_text": "license distributable"
+                }
+              ],
+              "identifier": "unknown-e0ae825f-bc8a-8223-3e4c-f3680fc8ea46"
+            }
+          ],
+          "other_license_expression": null,
+          "other_license_expression_spdx": null,
+          "other_license_detections": [],
+          "extracted_license_statement": "distributable",
+          "notice_text": null,
+          "source_packages": [
+            "pkg:rpm/fping@2.4-0.b2.rhfc1.dag?arch=src"
+          ],
+          "file_references": [],
+          "is_private": false,
+          "is_virtual": false,
+          "extra_data": {},
+          "dependencies": [],
+          "repository_homepage_url": null,
+          "repository_download_url": null,
+          "api_data_url": null,
+          "datasource_id": "rpm_archive",
+          "purl": "pkg:rpm/fping@2.4-0.b2.rhfc1.dag"
+        }
+      ],
+      "for_packages": [
+        "pkg:rpm/fping@2.4-0.b2.rhfc1.dag?uuid=fixed-uid-done-for-testing-5642512d1758"
+      ],
+      "scan_errors": []
+    }
+  ]
+}

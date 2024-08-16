@@ -1,0 +1,80 @@
+{
+  "type": "alpine",
+  "namespace": null,
+  "name": "kde-cli-tools",
+  "version": "5.22.0-r0",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": null,
+  "description": "Tools based on KDE Frameworks 5 to better interact with the system",
+  "release_date": null,
+  "parties": [],
+  "keywords": [],
+  "homepage_url": null,
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": null,
+  "code_view_url": null,
+  "vcs_url": null,
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "(gpl-2.0 OR gpl-3.0) AND gpl-2.0-plus AND gpl-2.0 AND lgpl-2.1",
+  "declared_license_expression_spdx": "(GPL-2.0-only OR GPL-3.0-only) AND GPL-2.0-or-later AND GPL-2.0-only AND LGPL-2.1-only",
+  "license_detections": [
+    {
+      "license_expression": "(gpl-2.0 OR gpl-3.0) AND gpl-2.0-plus AND gpl-2.0 AND lgpl-2.1",
+      "license_expression_spdx": "(GPL-2.0-only OR GPL-3.0-only) AND GPL-2.0-or-later AND GPL-2.0-only AND LGPL-2.1-only",
+      "matches": [
+        {
+          "license_expression": "(gpl-2.0 OR gpl-3.0) AND gpl-2.0-plus AND gpl-2.0 AND lgpl-2.1",
+          "spdx_license_expression": "(GPL-2.0-only OR GPL-3.0-only) AND GPL-2.0-or-later AND GPL-2.0-only AND LGPL-2.1-only",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "1-spdx-id",
+          "score": 100.0,
+          "matched_length": 25,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "spdx-license-identifier-gpl_2_0_or_gpl_3_0__and_gpl_2_0_plus_and_gpl_2_0_and_lgpl_2_1-807060997a907edbf6fb1afce31562a9d6562969",
+          "rule_url": null,
+          "matched_text": "(gpl-2.0-only OR gpl-3.0-only) AND gpl-2.0-or-later AND gpl-2.0-only AND lgpl-2.1-only"
+        }
+      ],
+      "identifier": "gpl_2_0_or_gpl_3_0__and_gpl_2_0_plus_and_gpl_2_0_and_lgpl_2_1-8f048462-559a-272b-6df3-4f10e08d651d"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "(GPL-2.0-only OR GPL-3.0-only) AND GPL-2.0-or-later AND GPL-2.0-only AND LGPL-2.1-only",
+  "notice_text": null,
+  "source_packages": [],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {
+    "sources": [
+      {
+        "file_name": null,
+        "url": "https://download.kde.org/stable/plasma/5.22.0/kde-cli-tools-5.22.0.tar.xz"
+      }
+    ],
+    "checksums": [
+      {
+        "file_name": "kde-cli-tools-5.22.0.tar.xz",
+        "sha512": "6905a29e4700c045de1e04975d001835c1cc26a6999cfd20459d0a8ff0123974bd0c5fd7931de3ac7355420a294f066479f2056d56ae4d2280daa5be753a9fe3"
+      }
+    ]
+  },
+  "dependencies": [],
+  "repository_homepage_url": null,
+  "repository_download_url": null,
+  "api_data_url": null,
+  "datasource_id": "alpine_apkbuild",
+  "purl": "pkg:alpine/kde-cli-tools@5.22.0-r0"
+}

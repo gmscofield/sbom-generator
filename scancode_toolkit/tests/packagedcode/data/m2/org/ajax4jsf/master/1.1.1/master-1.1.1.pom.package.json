@@ -1,0 +1,121 @@
+{
+  "type": "maven",
+  "namespace": "org.ajax4jsf",
+  "name": "master",
+  "version": "1.1.1",
+  "qualifiers": {},
+  "subpath": null,
+  "primary_language": "Java",
+  "description": "Ajax for Java Server faces core project",
+  "release_date": null,
+  "parties": [
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Alexander Smirnov",
+      "email": "alexsmirnov@exadel.com",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Igor Shabalov",
+      "email": "ishabalov@exadel.com",
+      "url": null
+    },
+    {
+      "type": "person",
+      "role": "developer",
+      "name": "Sergey Smirnov",
+      "email": "sergeysmirnov@exadel.com",
+      "url": null
+    }
+  ],
+  "keywords": [],
+  "homepage_url": "http://labs.jboss.com/jbossajax4jsf",
+  "download_url": null,
+  "size": null,
+  "sha1": null,
+  "md5": null,
+  "sha256": null,
+  "sha512": null,
+  "bug_tracking_url": "http://jira.jboss.org/jira/browse/AJSF",
+  "code_view_url": "http://anonsvn.jboss.org/repos/ajax4jsf/tags/ajax4jsf_1_1_1",
+  "vcs_url": "svn+http://anonsvn.jboss.org/repos/ajax4jsf/tags/ajax4jsf_1_1_1",
+  "copyright": null,
+  "holder": null,
+  "declared_license_expression": "lgpl-2.1 AND lgpl-2.0-plus",
+  "declared_license_expression_spdx": "LGPL-2.1-only AND LGPL-2.0-or-later",
+  "license_detections": [
+    {
+      "license_expression": "lgpl-2.1 AND lgpl-2.0-plus",
+      "license_expression_spdx": "LGPL-2.1-only AND LGPL-2.0-or-later",
+      "matches": [
+        {
+          "license_expression": "lgpl-2.1",
+          "spdx_license_expression": "LGPL-2.1-only",
+          "from_file": null,
+          "start_line": 1,
+          "end_line": 1,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 3,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "lgpl-2.1_85.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/lgpl-2.1_85.RULE",
+          "matched_text": "- name: LGPL 2.1"
+        },
+        {
+          "license_expression": "lgpl-2.0-plus",
+          "spdx_license_expression": "LGPL-2.0-or-later",
+          "from_file": null,
+          "start_line": 2,
+          "end_line": 2,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 7,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "lgpl_3.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/lgpl_3.RULE",
+          "matched_text": "  url: http://www.gnu.org/licenses/lgpl.html"
+        },
+        {
+          "license_expression": "lgpl-2.1",
+          "spdx_license_expression": "LGPL-2.1-only",
+          "from_file": null,
+          "start_line": 3,
+          "end_line": 3,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 8,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "lgpl-2.1_36.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/lgpl-2.1_36.RULE",
+          "matched_text": "  comments: GNU LESSER GENERAL PUBLIC LICENSE Version 2.1"
+        }
+      ],
+      "identifier": "lgpl_2_1_and_lgpl_2_0_plus-d477d49d-52e2-0d03-97d9-7786a7accad2"
+    }
+  ],
+  "other_license_expression": null,
+  "other_license_expression_spdx": null,
+  "other_license_detections": [],
+  "extracted_license_statement": "- name: LGPL 2.1\n  url: http://www.gnu.org/licenses/lgpl.html\n  comments: GNU LESSER GENERAL PUBLIC LICENSE Version 2.1\n",
+  "notice_text": null,
+  "source_packages": [
+    "pkg:maven/org.ajax4jsf/master@1.1.1?classifier=sources"
+  ],
+  "file_references": [],
+  "is_private": false,
+  "is_virtual": false,
+  "extra_data": {},
+  "dependencies": [],
+  "repository_homepage_url": "https://repo1.maven.org/maven2/org/ajax4jsf/master/1.1.1/",
+  "repository_download_url": "https://repo1.maven.org/maven2/org/ajax4jsf/master/1.1.1/master-1.1.1.jar",
+  "api_data_url": "https://repo1.maven.org/maven2/org/ajax4jsf/master/1.1.1/master-1.1.1.pom",
+  "datasource_id": "maven_pom",
+  "purl": "pkg:maven/org.ajax4jsf/master@1.1.1"
+}

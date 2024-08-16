@@ -1,0 +1,85 @@
+{
+  "license_detections": [
+    {
+      "identifier": "gpl_2_0_and_patent_disclaimer-3bb2602f-86f5-b9da-9bf5-b52e6920c8d1",
+      "license_expression": "gpl-2.0 AND patent-disclaimer",
+      "license_expression_spdx": "GPL-2.0-only AND LicenseRef-scancode-patent-disclaimer",
+      "detection_count": 1,
+      "reference_matches": [
+        {
+          "license_expression": "gpl-2.0 AND patent-disclaimer",
+          "license_expression_spdx": "GPL-2.0-only AND LicenseRef-scancode-patent-disclaimer",
+          "from_file": "e2fsprogs/e2fsprogs-fsstress",
+          "start_line": 4,
+          "end_line": 30,
+          "matcher": "2-aho",
+          "score": 100.0,
+          "matched_length": 185,
+          "match_coverage": 100.0,
+          "rule_relevance": 100,
+          "rule_identifier": "gpl-2.0_and_patent-disclaimer_3.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_and_patent-disclaimer_3.RULE"
+        }
+      ]
+    }
+  ],
+  "files": [
+    {
+      "path": "e2fsprogs-copyright",
+      "type": "file",
+      "detected_license_expression": null,
+      "detected_license_expression_spdx": null,
+      "license_detections": [],
+      "license_clues": [
+        {
+          "license_expression": "lgpl-2.0-plus",
+          "spdx_license_expression": "LGPL-2.0-or-later",
+          "from_file": "e2fsprogs/e2fsprogs-copyright",
+          "start_line": 19,
+          "end_line": 20,
+          "matcher": "3-seq",
+          "score": 14.39,
+          "matched_length": 20,
+          "match_coverage": 14.39,
+          "rule_relevance": 100,
+          "rule_identifier": "lgpl-2.0-plus_65.RULE",
+          "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/lgpl-2.0-plus_65.RULE"
+        }
+      ],
+      "percentage_of_license_text": 22.73,
+      "scan_errors": []
+    },
+    {
+      "path": "e2fsprogs-fsstress",
+      "type": "file",
+      "detected_license_expression": "gpl-2.0 AND patent-disclaimer",
+      "detected_license_expression_spdx": "GPL-2.0-only AND LicenseRef-scancode-patent-disclaimer",
+      "license_detections": [
+        {
+          "license_expression": "gpl-2.0 AND patent-disclaimer",
+          "license_expression_spdx": "GPL-2.0-only AND LicenseRef-scancode-patent-disclaimer",
+          "matches": [
+            {
+              "license_expression": "gpl-2.0 AND patent-disclaimer",
+              "spdx_license_expression": "GPL-2.0-only AND LicenseRef-scancode-patent-disclaimer",
+              "from_file": "e2fsprogs/e2fsprogs-fsstress",
+              "start_line": 4,
+              "end_line": 30,
+              "matcher": "2-aho",
+              "score": 100.0,
+              "matched_length": 185,
+              "match_coverage": 100.0,
+              "rule_relevance": 100,
+              "rule_identifier": "gpl-2.0_and_patent-disclaimer_3.RULE",
+              "rule_url": "https://github.com/nexB/scancode-toolkit/tree/develop/src/licensedcode/data/rules/gpl-2.0_and_patent-disclaimer_3.RULE"
+            }
+          ],
+          "identifier": "gpl_2_0_and_patent_disclaimer-3bb2602f-86f5-b9da-9bf5-b52e6920c8d1"
+        }
+      ],
+      "license_clues": [],
+      "percentage_of_license_text": 95.36,
+      "scan_errors": []
+    }
+  ]
+}
