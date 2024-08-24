@@ -1,9 +1,10 @@
 import argparse
 from . import __version__
-from .tool.generate.analyzeSbom import buildBom, makeBOM
+from .tool.generate.analyze_sbom import build_bom, output_bom
+from .tool.merge_export.merge_export import Merge_SBOM, Export_SBOM
 
 
-def get_input(argv=None):
+def get_input() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         description="Generate Software Bill of Materials (SBOM) for a software package.",
         allow_abbrev=False
@@ -34,45 +35,29 @@ def get_input(argv=None):
         help="Input path of software package, default is current path",
     )
     generate_parser.add_argument(
-        "-o", "--outfile",
-        metavar="<OUTFILE>", 
+        "-o", "--output",
+        metavar="<OUTPUT>", 
         type=str, 
         dest="output",
         default="-",
         help="Output file path of SBOM, default is stdout"
     )
     generate_parser.add_argument(
-        "-f", "--format",
-        metavar="<FORMAT>",
-        type=str,
-        dest="format",
-        choices=["txt", "json", "yaml"],
-        default="txt",
-        help="Output format of SBOM, choose from txt or json, default is txt"
-    )
-    generate_parser.add_argument(
         "--model", 
         metavar="<MODEL>", 
         type=str,
         dest="model",
-        choices=["spdx", "cyclonedx", "ossbom"],
-        default="ossbom",
-        help="SBOM Model, choose from SPDX, CycloneDX or OSSBOM, default is OSSBOM"
+        choices=["spdx", "cyclonedx", "ossbom", "middleware"],
+        default="middleware",
+        help="SBOM Model, choose from SPDX, CycloneDX, OSSBOM or middleware, default is middleware"
     )
     generate_parser.add_argument(
-        "-l", "--level",
-        metavar="<SBOM LEVEL>", 
-        type=int,
-        dest="level",
-        choices=[1, 2, 3],
-        default=1,
-        help="SBOM level, choose from 1, 2 or 3, \
-            default is basic level of SBOM (Level 1)"
-    )
-    generate_parser.add_argument(
-        "--tree", 
-        action="store_true",
-        help="Present the whole Dependency Tree in the SBOM document",
+        "--env", 
+        metavar="<ENVIRONMENT>",
+        type=str,
+        dest="env",
+        default="",
+        help="Running environment of software package, default is None"
     )
     
     # subcommand: merge SBOM
@@ -85,16 +70,27 @@ def get_input(argv=None):
         metavar="<INPUT>", 
         type=str, 
         dest="input",
-        default=".",
-        help="Input path of software package, default is current path",
+        nargs=2,
+        required=True,
+        help="Input path of SBOMs to be merged, 2 SBOMs are required. The first one is the \
+            root SBOM and the second one is sub-SBOM, currently only support json format",
     )
     merge_parser.add_argument(
-        "-o", "--outfile",
-        metavar="<OUTFILE>", 
+        "-o", "--output",
+        metavar="<OUTPUT>", 
         type=str, 
         dest="output",
         default="-",
         help="Output file path of SBOM, default is stdout"
+    )
+    merge_parser.add_argument(
+        "--model", 
+        metavar="<MODEL>", 
+        type=str,
+        dest="model",
+        choices=["spdx", "cyclonedx", "ossbom"],
+        default="ossbom",
+        help="SBOM Model, choose from SPDX, CycloneDX or OSSBOM, default is OSSBOM"
     )
     
     # subcommand: export SBOM
@@ -107,18 +103,36 @@ def get_input(argv=None):
         metavar="<INPUT>", 
         type=str, 
         dest="input",
-        default=".",
-        help="Input path of software package, default is current path",
+        required=True,
+        help="Path of SBOM file to be exported",
     )
     export_parser.add_argument(
-        "-o", "--outfile",
-        metavar="<OUTFILE>", 
+        "-o", "--output",
+        metavar="<OUTPUT>", 
         type=str, 
         dest="output",
         default="-",
         help="Output file path of SBOM, default is stdout"
     )
-
+    export_parser.add_argument(
+        "--id",
+        metavar="<ID>",
+        type=str,
+        dest="id",
+        required=True,
+        nargs="+",
+        help="ID of the top-level Component to be exported",
+    )
+    export_parser.add_argument(
+        "--model", 
+        metavar="<MODEL>", 
+        type=str,
+        dest="model",
+        choices=["spdx", "cyclonedx", "ossbom"],
+        default="ossbom",
+        help="SBOM Model, choose from SPDX, CycloneDX or OSSBOM, default is OSSBOM"
+    )
+    
     args = parser.parse_args()
     return args
 
@@ -126,26 +140,26 @@ def get_input(argv=None):
 if __name__ == "__main__":
     args = get_input()
     # print(args.format)
-    # print(args.level)
     # print(args.tree)
 
-    
-    # 返回的是OSSBOM类对象
     if args.subcmd == "generate":
-        bom = buildBom(args.input, args.level, args.tree)
-        makeBOM(bom, args.output, args.format, args.model)
+        import logging
+        logging.basicConfig(
+            format="%(asctime)s (Process %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
+            level=logging.INFO,
+            filemode="w",
+            filename=f"/home/jcg/SBOM/sbom-generator/SbomGT/log/test-{args.model}.log"
+        )
+        
+        bom = build_bom(args.input, args.model, args.env)
+        output_bom(bom, args.output)
     elif args.subcmd == "merge":
-        print(args)
+        Merge_SBOM(args.input, args.output, args.model).merge_sbom()
     elif args.subcmd == "export":
-        print(args)
+        Export_SBOM(args.input, args.output, args.model, args.id).export_sbom()
     
     
-    # pkg = PkgInfo()
-    # pkgList = PkgList()
-    # pkgList.addPkg(pkg)
-    # bom = OSSBOM(level=args.level, pkgList=pkgList)
-    # bom.makeBOM(args.outPath, args.format)
-    # print(IDManager.IDList)
 
 
-# 运行: python -m SbomGT -i E:\\code\\SbomGT\\example\\cyclonedx-python -o E:\\code\\SbomGT\\result\\sbom.json -f json -l 1
+# python -m SbomGT generate -i E:\\code\\SbomGT\\example\\cyclonedx-python -o E:\\code\\SbomGT\\result\\sbom.json -f json -l 1
+

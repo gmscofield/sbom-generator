@@ -1,23 +1,24 @@
-from .universal import IDManager
-
+from typing import Optional
 
 class RelationshipInfo:
-    def __init__(self):
+    def __init__(self) -> None:
         self.relationshipList = []
         
-    def insert(self, relationshipType = None, source = None, target = None):
+    def insert(
+        self, 
+        relationshipType: Optional[str] = None, 
+        source: Optional[str] = None, 
+        target: Optional[str] = None
+    ) -> None:
         if relationshipType == None or source == None or target == None:
             raise ValueError("RelationshipType, Source and Target cannot be empty")
         
         if not relationshipType in ["DependsOn", "Contain", "BuildDepends"]:
             raise ValueError("Invalid RelationshipType")
         
-        if not source in IDManager.IDList["rsID"] or not target in IDManager.IDList["rsID"]:
-            raise ValueError("Invalid Source or Target")
-        
         if not {"ResourceID": source, relationshipType: target} in self.relationshipList:
             self.relationshipList.append({"ResourceID": source, 
                                         relationshipType: target})
 
-    def toDict(self):
+    def toDict(self) -> list:
         return self.relationshipList

@@ -1,11 +1,11 @@
 from jinja2 import Environment, FileSystemLoader, meta
 import yaml
-from typing import Dict
-from .utils import algoList, parse_depend, uri2name, pkg_meta_template
-from ....sbomModel.universal import IDManager, Ref
+from typing import Optional
+from .utils import ALGOLIST, parse_depend, component_meta_template, str2license, IDManager
+from ....output import middleware
 
 
-def parse_metayaml_meta(meta_path):
+def parse_metayaml_meta(meta_path: str) -> dict:
     root, file = meta_path.rsplit('/', 1)
     env = Environment(loader=FileSystemLoader(root))
     ast = env.parse(open(meta_path, "r", errors='ignore').read())
@@ -21,18 +21,18 @@ def parse_metayaml_meta(meta_path):
     return parsed_yaml
 
 
-def undeclared_exception(*args):
+def undeclared_exception(*args) -> str:
     return "default_undeclared_exception"
 
 
-def metayaml_check(content):
+def metayaml_check(content: Optional[str]) -> Optional[str]:
     if not content or "default_undeclared_exception" in content:
         return None
     else:
         return content
 
 
-def analyze_metayaml_meta(meta_path, level = 1):
+def analyze_metayaml_meta(meta_path: str) -> dict:
     root_name = None
     yamlpath = (
         "/info/recipe.tar-extract/recipe/meta.yaml",
@@ -50,7 +50,6 @@ def analyze_metayaml_meta(meta_path, level = 1):
     if not root_name:
         return None
     
-    meta = pkg_meta_template(level)
     parsed_yaml = parse_metayaml_meta(meta_path)
     # package
     pkg_name = metayaml_check(parsed_yaml.get("package", {}).get("name", None))
@@ -61,36 +60,51 @@ def analyze_metayaml_meta(meta_path, level = 1):
     pkg_checksum = []
     
     # source
-
     source = parsed_yaml.get("source", {})
-    for algo in algoList:
-        checksum = metayaml_check(source.get(algo, None))
+    for algo in ALGOLIST:
+        checksum = metayaml_check(source.get(algo.lower(), None))
+        if not checksum:
+            checksum = metayaml_check(source.get(algo, None))
         if checksum:
-            pkg_checksum.append({"Algorithm": algo, "Checksum": checksum})
+            pkg_checksum.append(
+                middleware.Hash(
+                    alg=algo,
+                    value=checksum
+                )
+            )
     
     # about
     about = parsed_yaml.get("about", {})
+    description = metayaml_check(about.get("description", None))
+    if not description:
+        description = metayaml_check(about.get("summary", None))
     pkg_sourceRepo = metayaml_check(about.get("dev_url", None))
     pkgID = IDManager.get_pkgID(pkgtype = "conda", name = pkg_name, version = pkg_version, url = pkg_sourceRepo)
-    pkg_license = metayaml_check(about.get("license", None))
-    ref1 = metayaml_check(about.get("doc_url", None))
-    pkg_ref = Ref()
-    if ref1:
-        pkg_ref.insert(name = uri2name(ref1), docURI = ref1)
-
-    if level == 3:
-        pkg_homepage = metayaml_check(about.get("home", None))
-        pkg_download = metayaml_check(source.get("url", None))
-        pkg_valid = {"resourceID": pkgID, "downloadLocation": pkg_download,
-                    "sourceRepo": pkg_sourceRepo, "homepage": pkg_homepage}
-
-    # print(pkg_name, pkg_version, pkg_checksum, requirements, pkg_license, pkg_homepage, pkg_sourceRepo, pkg_ref, sep='\n')
+    
+    pkg_ref = []
+    doc_url = metayaml_check(about.get("doc_url", None))
+    if doc_url:
+        pkg_ref.append(
+            middleware.ExternalReference(
+                url=doc_url,
+                type="documentation",
+            )
+        )
+    doc_source_url = metayaml_check(about.get("source_url", None))
+    if doc_source_url:
+        pkg_ref.append(
+            middleware.ExternalReference(
+                url=doc_source_url,
+                type="website"
+            )
+        )
+    
     # requirements
     requirements = parsed_yaml.get("requirements", {})
     builddepends = set()
     dependson = []
     for time, depends in requirements.items():
-        if time == "build" or time == "host":
+        if time == "build":
             for depend in depends:
                 if metayaml_check(depend):
                     builddepends.add(parse_depend(depend))
@@ -100,39 +114,52 @@ def analyze_metayaml_meta(meta_path, level = 1):
                     dependson.append(parse_depend(depend))
     builddepends = list(builddepends)
     
-    meta["pkg"] = {
-        "pkgName": pkg_name, 
-        "pkgID": pkgID, 
-        "pkgChecksum": pkg_checksum, 
-        "declaredLicense": pkg_license, 
-        "pkgRef": pkg_ref,
-        "version": pkg_version
-    }
-    meta["builddepends"] = builddepends
-    meta["dependson"] = dependson
-    if level == 3:
-        meta["pkgValid"] = pkg_valid
+    meta = component_meta_template()
+    meta["component"] = middleware.Component(
+        type="Package: LIBRARY",
+        name=pkg_name,
+        ID=pkgID,
+        version=pkg_version,
+        description=description,
+        checksum=pkg_checksum,
+        licenses=str2license(metayaml_check(about.get("license", None))),
+        external_references=pkg_ref if pkg_ref else None,
+    )
+    meta["dependson"] = {"root": dependson}
+    if builddepends:
+        meta["relationships"]["builddepends"] = {"root": builddepends}
+    meta["component"].homepage = metayaml_check(about.get("home", None))
+    meta["component"].download_location = metayaml_check(source.get("url", None))
+    meta["component"].source_repo = pkg_sourceRepo
 
     return meta
 
 
-def analyze_condayml_meta(meta_path, level = 1):
-    meta = pkg_meta_template(level)
+def analyze_condayml_meta(meta_path: str) -> dict:
+    meta = component_meta_template()
     with open(meta_path, 'r', encoding='utf-8', errors='ignore') as f:
         result = yaml.load(f.read(), Loader=yaml.FullLoader)
     
-    meta["pkg"]["pkgName"] = result.get('name', None)
+    pkgName = result.get('name', None)
+    if pkgName:
+        meta["component"] = middleware.Component(type="Package: LIBRARY", name=pkgName)
     depends = result.get('dependencies', [])
+    dependson = []
     for depend in depends:
-        if isinstance(depend, Dict):
+        if isinstance(depend, dict):
             key, value = list(depend.items())[0]
             if key == "pip":
                 for v in value:
                     if isinstance(v, str):
-                        meta["dependson"].append(parse_depend(v))
+                        dependson.append(parse_depend(v))
         else:
             if isinstance(depend, str):
-                meta["dependson"].append(parse_depend(depend))
-    
+                if "python=" in depend:
+                    continue
+                dependson.append(parse_depend(depend))
+    meta["dependson"] = {"root": dependson}
     return meta
-    
+
+
+def analyze_environmentyaml_meta(meta_path: str) -> dict:
+    analyze_condayml_meta(meta_path)

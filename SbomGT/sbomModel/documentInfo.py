@@ -1,23 +1,29 @@
+from typing import Optional
 from . import __version__
-from .universal import Ref, IDManager
+from .util import Ref
 
 
 # DocumentInfo class is used to organize document information
 class DocumentInfo:
-    def __init__(self, docFormat = "OSSBOM", 
-                 docName = "OSSBOM Document",
-                 docRef = Ref()):
-        self.docID = IDManager.get_docID()
+    def __init__(
+        self, 
+        docFormat: str = "OSSBOM", 
+        docName: str = "OSSBOM Document",
+        docID: Optional[str] = None,
+        docRef: Optional[Ref] = Ref()
+    ) -> None:
+        self.docID = docID
         self.docFormat = docFormat
         self.docName = docName
         self.docVersion = __version__
         self.docLicense = "CC0-1.0"
         self.docRef = docRef
-        docRef.insert(name = "MulanPSL2", 
-                      docURI = "http://license.coscl.org.cn/MulanPSL2"
-                    )
+        docRef.insert(
+            name = "MulanPSL2", 
+            docURI = "http://license.coscl.org.cn/MulanPSL2"
+        )
 
-    def toDict(self):
+    def toDict(self) -> dict:
         docInfo = {
             "DocumentFormat": self.docFormat,
             "DocumentName": self.docName,

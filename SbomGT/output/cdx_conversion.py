@@ -1,8 +1,8 @@
-import sys
-sys.path.append("/home/jcg/SBOM/sbom-generator/SbomGT/")
+# import sys
+# sys.path.append("/home/jcg/SBOM/sbom-generator/SbomGT/")
 
-from middleware import Middleware, Component, Licensing, CrossRef, Service, Signer, Signature, ReleaseNotes, Relationship, Hash, Annotation, License, Individual, Extension, ExternalReference, Issue, Note, Text, Swid
-from schema import cdx_model
+from .middleware import Middleware, Component, Licensing, CrossRef, Service, Signer, Signature, ReleaseNotes, Relationship, Hash, Annotation, License, Individual, Extension, ExternalReference, Issue, Note, Text, Swid
+from ..schema import cdx_model
 from typing import Union, List, Optional, Tuple
 from datetime import datetime
 import pydantic
@@ -11,9 +11,9 @@ import re
 
 class Cdx2Middleware:
     def __init__(self, cdx_bom: dict) -> None:
-        self.cdx_bom = cdx_bom
-        if self.cdx_bom.get("specVersion") != "1.6":
+        if cdx_bom.get("specVersion") != "1.6":
             raise ValueError("Only support CycloneDX 1.6 version")
+        self.cdx_bom = cdx_bom
 
     def cdx2middleware(self) -> Middleware:
         bom = cdx_model.CyclonedxBillOfMaterialsStandard(**self.cdx_bom)
@@ -150,7 +150,6 @@ class Cdx2Middleware:
                 )
         
         midware = Middleware(
-            spec_version=bom.specVersion,
             doc_ID=bom.serialNumber,
             bom_version=bom.version,
             doc_name="CycloneDX 1.6 Document",
@@ -584,14 +583,14 @@ class Middleware2Cdx:
     def middleware2cdx(self) -> dict:
         bom = cdx_model.CyclonedxBillOfMaterialsStandard(
             bomFormat=cdx_model.BomFormat.CycloneDX,
-            specVersion=self.midware.spec_version,
+            specVersion="1.6",
             serialNumber=self.midware.doc_ID,
             version=self.midware.bom_version,
         )
         lfc = []
         if self.midware.lifecycles:
             for lfcycle in self.midware.lifecycles:
-                if lfcycle in cdx_model.Phase._value2member_map_:
+                if lfcycle in [member.value for member in cdx_model.Phase]:
                     lfc.append(
                         cdx_model.Lifecycles(
                             phase=cdx_model.Phase(lfcycle)
@@ -658,6 +657,8 @@ class Middleware2Cdx:
         if self.midware.components:
             for comp in self.midware.components:
                 cdx_comp = self.component_mid2cdx(comp)
+                if not cdx_comp:
+                    continue
                 bom_comps.append(cdx_comp)
                 if cdx_comp.bom_ref:
                     comp_dic[cdx_comp.bom_ref.root] = cdx_comp
@@ -812,14 +813,14 @@ class Middleware2Cdx:
         bom.annotations = annotations
         bom.properties = properties
         bom.signature = self.signature_mid2cdx(self.midware.signature)
-        return bom.model_dump(by_alias=True, exclude_none=True)
+        return bom.model_dump(mode='json', by_alias=True, exclude_none=True)
 
     def hash_mid2cdx(self, hashes: Optional[List[Hash]]) -> Optional[List[cdx_model.Hash]]:
         if not hashes:
             return None
         checksum = []
         for hash_checksum in hashes:
-            if hash_checksum.alg in cdx_model.HashAlg._value2member_map_:
+            if hash_checksum.alg in [member.value for member in cdx_model.HashAlg]:
                 checksum.append(
                     cdx_model.Hash(
                         alg=cdx_model.HashAlg(hash_checksum.alg),
@@ -839,7 +840,7 @@ class Middleware2Cdx:
                 cdx_model.ExternalReference(
                     url=ref.url,
                     comment=ref.comment,
-                    type=cdx_model.Type3(ref.type) if ref.type in cdx_model.Type3._value2member_map_ else pydantic.AnyUrl(ref.type),
+                    type=cdx_model.Type3(ref.type) if ref.type in [member.value for member in cdx_model.Type3] else pydantic.AnyUrl(ref.type),
                     hashes=self.hash_mid2cdx(ref.checksum)
                 )
             )
@@ -864,7 +865,7 @@ class Middleware2Cdx:
 
     def signer_mid2cdx(self, signer: Optional[Signer]) -> Optional[cdx_model.Signer]:
         return cdx_model.Signer(
-            algorithm=cdx_model.Algorithm(signer.algorithm) if signer.algorithm in cdx_model.Algorithm._value2member_map_ else pydantic.AnyUrl(signer.algorithm),
+            algorithm=cdx_model.Algorithm(signer.algorithm) if signer.algorithm in [member.value for member in cdx_model.Algorithm] else pydantic.AnyUrl(signer.algorithm),
             keyId=signer.keyId,
             publicKey=cdx_model.PublicKey(kty=cdx_model.KeyType(signer.publicKey)) if signer.publicKey else None,
             certificatePath=signer.certificatePath,
@@ -911,10 +912,18 @@ class Middleware2Cdx:
         if not ind:
             return None
         if ind.type == "person":
+            email = None
+            if ind.email.count("@") == 1:
+                email = ind.email
+            elif ind.email.count("@") > 1:
+                for em in ind.email.split(" "):
+                    if "@" in em:
+                        email = em
+                        break
             return cdx_model.OrganizationalContact(
                 bom_ref=cdx_model.RefType(root=ind.ID) if ind.ID else None,
                 name=ind.name,
-                email=ind.email,
+                email=email,
                 phone=ind.phone
             )
         elif ind.type == "organization":
@@ -931,6 +940,8 @@ class Middleware2Cdx:
             return None
         bom_license = []
         for lic in licenses:
+            if not lic.spdxID and not lic.name:
+                continue
             licensing = None
             if lic.licensing:
                 licensor = None
@@ -1012,7 +1023,10 @@ class Middleware2Cdx:
                 lic_name = lic_name_ls[0].strip()
                 if len(lic_name_ls) > 1:
                     lic_ref = lic_name_ls[1].strip().strip(")")
-                    lic_ref = cdx_model.RefType(root=lic_ref)
+                    if lic_ref:
+                        lic_ref = cdx_model.RefType(root=lic_ref)
+                    else:
+                        lic_ref = None
             
             lic_properties = []
             if lic.crossRefs:
@@ -1050,12 +1064,12 @@ class Middleware2Cdx:
                 )
             
             # License1
-            if lic.spdxID in cdx_model.spdx.Schema._value2member_map_:
+            if lic.spdxID in [member.value for member in cdx_model.spdx.Schema]:
                 root_license = cdx_model.License1(
                     id=cdx_model.spdx.Schema(lic.spdxID),
                     name=lic_name,
                     bom_ref=lic_ref,
-                    acknowledgement=cdx_model.LicenseAcknowledgementEnumeration(lic.type) if lic.type in cdx_model.LicenseAcknowledgementEnumeration._value2member_map_ else None,
+                    acknowledgement=cdx_model.LicenseAcknowledgementEnumeration(lic.type) if lic.type in [member.value for member in cdx_model.LicenseAcknowledgementEnumeration] else None,
                     text=text,
                     url=url,
                     licensing=licensing,
@@ -1072,7 +1086,7 @@ class Middleware2Cdx:
                 bom_license.append(
                     cdx_model.LicenseChoiceItem1(
                         expression=lic.spdxID,
-                        acknowledgement=cdx_model.LicenseAcknowledgementEnumeration(lic.type) if lic.type in cdx_model.LicenseAcknowledgementEnumeration._value2member_map_ else None,
+                        acknowledgement=cdx_model.LicenseAcknowledgementEnumeration(lic.type) if lic.type in [member.value for member in cdx_model.LicenseAcknowledgementEnumeration] else None,
                         bom_ref=cdx_model.RefType(root=lic.name) if lic.name else None
                     )
                 )
@@ -1081,7 +1095,7 @@ class Middleware2Cdx:
                 root_license = cdx_model.License2(
                     name=lic_name,
                     bom_ref=lic_ref,
-                    acknowledgement=cdx_model.LicenseAcknowledgementEnumeration(lic.type) if lic.type in cdx_model.LicenseAcknowledgementEnumeration._value2member_map_ else None,
+                    acknowledgement=cdx_model.LicenseAcknowledgementEnumeration(lic.type) if lic.type in [member.value for member in cdx_model.LicenseAcknowledgementEnumeration] else None,
                     text=text,
                     url=url,
                     licensing=licensing,
@@ -1121,7 +1135,7 @@ class Middleware2Cdx:
             for note in releaseNotes.notes:
                 notes.append(
                     cdx_model.Note(
-                        locale=cdx_model.LocaleType(root=note.locale) if note.locale in cdx_model.LocaleType._value2member_map_ else None,
+                        locale=cdx_model.LocaleType(root=note.locale) if note.locale in [member.value for member in cdx_model.LocaleType] else None,
                         text=cdx_model.Attachment(
                             content=note.text.content,
                             contentType=note.text.contentType,
@@ -1148,7 +1162,7 @@ class Middleware2Cdx:
             return None
         bom_type = cdx_model.Type.library
         type_str = comp.type.lower().replace("_", "-").split(":")[-1]
-        for type_enum in cdx_model.Type._value2member_map_:
+        for type_enum in [member.value for member in cdx_model.Type]:
             if type_enum in type_str:
                 bom_type = cdx_model.Type(type_enum)
                 break
@@ -1285,7 +1299,7 @@ class Middleware2Cdx:
             name=comp.name,
             version=cdx_model.Version(root=comp.version) if comp.version else None,
             description=comp.description,
-            scope=cdx_model.Scope(comp.scope) if comp.scope in cdx_model.Scope._value2member_map_ else None,
+            scope=cdx_model.Scope(comp.scope) if comp.scope in [member.value for member in cdx_model.Scope] else None,
             hashes=self.hash_mid2cdx(comp.checksum),
             licenses=self.license_mid2cdx(comp.licenses),
             copyright=comp.copyright,

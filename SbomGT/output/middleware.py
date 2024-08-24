@@ -1,4 +1,4 @@
-from pydantic import BaseModel, Field, ConfigDict, conint
+from pydantic import BaseModel, Field, ConfigDict
 from typing import List, Optional, Literal, Union
 
 
@@ -658,7 +658,7 @@ class Service(BaseModel):
     )
     ID: Optional[str] = Field(
         None,
-        description="An optional identifier which can be used to reference the service elsewhere in the BOM. Every bom-ref MUST be unique within the BOM.\nValue SHOULD not start with the BOM-Link intro 'urn:cdx:' to avoid conflicts with BOM-Links.",
+        description="An optional identifier which can be used to reference the service elsewhere in the BOM. Every bom-ref MUST be unique within the BOM.",
         title='BOM Reference',
     )
     provider: Optional[Individual] = Field(
@@ -732,7 +732,7 @@ class Service(BaseModel):
     )
     properties: Optional[List[Extension]] = Field(
         None,
-        description='Provides the ability to document properties in a name-value store. This provides flexibility to include data not officially supported in the standard without having to use additional namespaces or create extensions. Unlike key-value stores, properties support duplicate names, each potentially having different values. Property names of interest to the general public are encouraged to be registered in the [CycloneDX Property Taxonomy](https://github.com/CycloneDX/cyclonedx-property-taxonomy). Formal registration is OPTIONAL.',
+        description='Provides the ability to document properties in a name-value store.',
         title='Properties',
     )
     tags: Optional[str] = Field(
@@ -812,11 +812,6 @@ class Annotation(BaseModel):
     )
 
 class Middleware(BaseModel):
-    spec_version: str = Field(
-        ...,
-        description='The version of the SBOM specification',
-        title='Specification Version',
-    )
     bom_version: Optional[int] = Field(
         1,
         description='The version of the SBOM',

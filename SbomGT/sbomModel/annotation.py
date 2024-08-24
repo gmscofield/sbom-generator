@@ -2,11 +2,11 @@ from datetime import datetime
 
 
 class Annotation:
-    def __init__(self):
+    def __init__(self) -> None:
         self.cnt = 0
         self.annotationList = []
     
-    def insert(self, annotationID, annotator, annotationText):
+    def insert(self, annotationID: str, annotator: str, annotationText: str) -> None:
         self.annotationList.append(
             {
                 "AnnotationID": annotationID,
@@ -17,6 +17,6 @@ class Annotation:
         )
         self.cnt += 1
 
-    def toDict(self):
+    def toDict(self) -> list:
         return self.annotationList
         

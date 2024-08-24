@@ -1,0 +1,784 @@
+{
+    "$defs": {
+        "Annotations": {
+            "additionalProperties": false,
+            "properties": {
+                "AnnotationID": {
+                    "description": "The ID of the annotation.",
+                    "title": "Annotation ID",
+                    "type": "string"
+                },
+                "AnnotationTime": {
+                    "description": "The time of the annotation.",
+                    "title": "Annotation Time",
+                    "type": "string"
+                },
+                "Annotator": {
+                    "description": "The annotator of the annotation.",
+                    "title": "Annotator",
+                    "type": "string"
+                },
+                "AnnotationText": {
+                    "description": "The text of the annotation.",
+                    "title": "Annotation Text",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "AnnotationID",
+                "AnnotationTime",
+                "Annotator",
+                "AnnotationText"
+            ],
+            "title": "Annotations",
+            "type": "object"
+        },
+        "Checksum": {
+            "additionalProperties": false,
+            "properties": {
+                "Algorithm": {
+                    "description": "The algorithm of the checksum.",
+                    "title": "Checksum Algorithm",
+                    "type": "string"
+                },
+                "Checksum": {
+                    "description": "The value of the checksum.",
+                    "title": "Checksum Value",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Algorithm",
+                "Checksum"
+            ],
+            "title": "Checksum",
+            "type": "object"
+        },
+        "DocumentInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "DocumentFormat": {
+                    "default": "OSSBOM",
+                    "description": "The format of the document.",
+                    "title": "Document Format",
+                    "type": "string"
+                },
+                "DocumentName": {
+                    "description": "The name of the document.",
+                    "title": "Document Name",
+                    "type": "string"
+                },
+                "DocumentVersion": {
+                    "description": "The version of the document.",
+                    "title": "Document Version",
+                    "type": "string"
+                },
+                "DocumentID": {
+                    "description": "The ID of the document.",
+                    "title": "Document ID",
+                    "type": "string"
+                },
+                "DocumentLicense": {
+                    "default": "CC0-1.0",
+                    "description": "The license of the document.",
+                    "title": "Document License",
+                    "type": "string"
+                },
+                "DocumentRef": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Reference"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The reference of the document.",
+                    "title": "Document Reference"
+                }
+            },
+            "required": [
+                "DocumentName",
+                "DocumentVersion",
+                "DocumentID"
+            ],
+            "title": "DocumentInfo",
+            "type": "object"
+        },
+        "InnerInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "InnerType": {
+                    "description": "The type of the inner information.",
+                    "enum": [
+                        "FILE",
+                        "SNIPPET"
+                    ],
+                    "title": "Inner Type",
+                    "type": "string"
+                },
+                "InnerName": {
+                    "description": "The name of the inner information.",
+                    "title": "Inner Name",
+                    "type": "string"
+                },
+                "InnerID": {
+                    "description": "The ID of the inner information.",
+                    "title": "Inner ID",
+                    "type": "string"
+                },
+                "InnerLocation": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The location of the inner information.",
+                    "title": "Inner Location"
+                },
+                "InnerChecksum": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Checksum"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The checksum of the inner information.",
+                    "title": "Inner Checksum"
+                },
+                "DeclaredLicense": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The declared license of the inner information.",
+                    "title": "Declared License"
+                },
+                "Copyright": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The copyright of the inner information.",
+                    "title": "Copyright"
+                },
+                "InnerRef": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Reference"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The reference of the inner information.",
+                    "title": "Inner Reference"
+                }
+            },
+            "required": [
+                "InnerType",
+                "InnerName",
+                "InnerID"
+            ],
+            "title": "InnerInfo",
+            "type": "object"
+        },
+        "License": {
+            "additionalProperties": false,
+            "properties": {
+                "LicenseID": {
+                    "description": "The ID of the license.",
+                    "title": "License ID",
+                    "type": "string"
+                },
+                "LicenseName": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The name of the license.",
+                    "title": "License Name"
+                },
+                "LicenseText": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The text of the license.",
+                    "title": "License Text"
+                },
+                "LicenseChecksum": {
+                    "anyOf": [
+                        {
+                            "$ref": "#/$defs/Checksum"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The checksum of the license.",
+                    "title": "License Checksum"
+                },
+                "LicenseRef": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Reference"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The reference of the license.",
+                    "title": "License Reference"
+                }
+            },
+            "required": [
+                "LicenseID"
+            ],
+            "title": "License",
+            "type": "object"
+        },
+        "PkgInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "PackageName": {
+                    "description": "The name of the package.",
+                    "title": "Package Name",
+                    "type": "string"
+                },
+                "PackageVersion": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The version of the package.",
+                    "title": "Package Version"
+                },
+                "PackageID": {
+                    "description": "The ID of the package.",
+                    "title": "Package ID",
+                    "type": "string"
+                },
+                "PackageChecksum": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Checksum"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The checksum of the package.",
+                    "title": "Package Checksum"
+                },
+                "DeclaredLicense": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The declared license of the package.",
+                    "title": "Declared License"
+                },
+                "copyright": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The copyright of the package.",
+                    "title": "Copyright"
+                },
+                "Properties": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Property"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The properties of the package.",
+                    "title": "Properties"
+                },
+                "PackageRef": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/Reference"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The reference of the package.",
+                    "title": "Package Reference"
+                }
+            },
+            "required": [
+                "PackageName",
+                "PackageID"
+            ],
+            "title": "PkgInfo",
+            "type": "object"
+        },
+        "Property": {
+            "additionalProperties": false,
+            "properties": {
+                "Key": {
+                    "description": "The name of the property.",
+                    "title": "Property Name",
+                    "type": "string"
+                },
+                "Value": {
+                    "description": "The value of the property.",
+                    "title": "Property Value",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Key",
+                "Value"
+            ],
+            "title": "Property",
+            "type": "object"
+        },
+        "Reference": {
+            "additionalProperties": false,
+            "properties": {
+                "Name": {
+                    "description": "The name of the reference.",
+                    "title": "Reference Name",
+                    "type": "string"
+                },
+                "DocumentURI": {
+                    "description": "The URI of the document.",
+                    "title": "Document URI",
+                    "type": "string"
+                }
+            },
+            "required": [
+                "Name",
+                "DocumentURI"
+            ],
+            "title": "Reference",
+            "type": "object"
+        },
+        "RelationshipInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "ResourceID": {
+                    "description": "The ID of the resource.",
+                    "title": "Resource ID",
+                    "type": "string"
+                },
+                "Contain": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The contained resources.",
+                    "title": "Contain"
+                },
+                "DependsOn": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The depended resources.",
+                    "title": "Depends On"
+                },
+                "BuildDepends": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The build depended resources.",
+                    "title": "Build Depends"
+                }
+            },
+            "required": [
+                "ResourceID"
+            ],
+            "title": "RelationshipInfo",
+            "type": "object"
+        },
+        "ResourceValidity": {
+            "additionalProperties": false,
+            "properties": {
+                "ResourceID": {
+                    "description": "The ID of the resource.",
+                    "title": "Resource ID",
+                    "type": "string"
+                },
+                "Supplier": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The supplier of the resource.",
+                    "title": "Supplier"
+                },
+                "Originator": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The originator of the resource.",
+                    "title": "Originator"
+                },
+                "DownloadLocation": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The download location of the resource.",
+                    "title": "Download Location"
+                },
+                "SourceRepository": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The source repository of the resource.",
+                    "title": "Source Repository"
+                },
+                "HomePage": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The home page of the resource.",
+                    "title": "Home Page"
+                },
+                "ReleaseTime": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The release time of the resource.",
+                    "title": "Release Time"
+                },
+                "BuiltTime": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The built time of the resource.",
+                    "title": "Built Time"
+                },
+                "ValidUntilTime": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The valid until time of the resource.",
+                    "title": "Valid Until Time"
+                }
+            },
+            "required": [
+                "ResourceID"
+            ],
+            "title": "ResourceValidity",
+            "type": "object"
+        },
+        "ValidityInfo": {
+            "additionalProperties": false,
+            "properties": {
+                "DocumentCreator": {
+                    "description": "The creator of the document.",
+                    "title": "Document Creator",
+                    "type": "string"
+                },
+                "DocumentCreationTime": {
+                    "description": "The creation time of the document.",
+                    "title": "Document Creation Time",
+                    "type": "string"
+                },
+                "LicenseListVersion": {
+                    "description": "The version of the license list.",
+                    "title": "License List Version",
+                    "type": "string"
+                },
+                "DocumentValidator": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The validator of the document.",
+                    "title": "Document Validator"
+                },
+                "DocumentValidationTime": {
+                    "anyOf": [
+                        {
+                            "type": "string"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The validation time of the document.",
+                    "title": "Document Validation Time"
+                },
+                "ResourceValidityInfo": {
+                    "anyOf": [
+                        {
+                            "items": {
+                                "$ref": "#/$defs/ResourceValidity"
+                            },
+                            "type": "array"
+                        },
+                        {
+                            "type": "null"
+                        }
+                    ],
+                    "default": null,
+                    "description": "The validity information of the resource.",
+                    "title": "Resource Validity Information"
+                }
+            },
+            "required": [
+                "DocumentCreator",
+                "DocumentCreationTime",
+                "LicenseListVersion"
+            ],
+            "title": "ValidityInfo",
+            "type": "object"
+        }
+    },
+    "additionalProperties": false,
+    "properties": {
+        "DocumentInformation": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/DocumentInfo"
+                }
+            ],
+            "description": "The document information section of the OSSBOM.",
+            "title": "Document Information"
+        },
+        "PackageInformation": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/PkgInfo"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "The package information section of the OSSBOM.",
+            "title": "Package Information"
+        },
+        "InnerInformation": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/InnerInfo"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "The file and snippet information section of the OSSBOM.",
+            "title": "Inner Information"
+        },
+        "ValidityInformation": {
+            "allOf": [
+                {
+                    "$ref": "#/$defs/ValidityInfo"
+                }
+            ],
+            "description": "The validity information section of the OSSBOM.",
+            "title": "Validity Information"
+        },
+        "RelationshipInformation": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/RelationshipInfo"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "The relationship information section of the OSSBOM.",
+            "title": "Relationship Information"
+        },
+        "OtherLicensingInformation": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/License"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "The other licensing information section of the OSSBOM.",
+            "title": "Other Licensing Information"
+        },
+        "Annotation": {
+            "anyOf": [
+                {
+                    "items": {
+                        "$ref": "#/$defs/Annotations"
+                    },
+                    "type": "array"
+                },
+                {
+                    "type": "null"
+                }
+            ],
+            "default": null,
+            "description": "The annotation section of the OSSBOM.",
+            "title": "Annotation"
+        }
+    },
+    "required": [
+        "DocumentInformation",
+        "ValidityInformation"
+    ],
+    "title": "OSSBOM",
+    "type": "object"
+}

@@ -5,7 +5,7 @@ import yaml
 import hashlib
 from .documentInfo import DocumentInfo
 from .pkgInfo import PkgList
-from .componentInfo import ComponentList
+from .innerInfo import InnerList
 from .validityInfo import ValidityInfo
 from .license import LicenseList
 from .relationInfo import RelationshipInfo
@@ -14,31 +14,31 @@ from .annotation import Annotation
 
 
 class OSSBOM():
-    def __init__(self, level = 1, 
-                    docInfo = DocumentInfo(), 
-                    pkgList = PkgList(),
-                    componentList = ComponentList(),
-                    validityInfo = ValidityInfo(),
-                    relashionshipInfo = RelationshipInfo(),
-                    licenseList = LicenseList(), 
-                    annotation = Annotation()):
-        self.level = level
+    def __init__(
+        self, 
+        docInfo: DocumentInfo = DocumentInfo(), 
+        pkgList: PkgList = PkgList(),
+        innerList: InnerList = InnerList(),
+        validityInfo: ValidityInfo = ValidityInfo(),
+        relashionshipInfo: RelationshipInfo = RelationshipInfo(),
+        licenseList: LicenseList = LicenseList(), 
+        annotation: Annotation = Annotation()
+    ) -> None:
         self.docInfo = docInfo
         self.pkgList = pkgList
-        self.componentList = componentList
+        self.innerList = innerList
         self.validityInfo = validityInfo
         self.relashionshipInfo = relashionshipInfo
         self.licenseList = licenseList
         self.annotation = annotation
 
     
-    def toDict(self):
+    def toDict(self) -> dict:
         bomDict = dict()
         bomDict.update({"DocumentInformation": self.docInfo.toDict()})
         bomDict.update({"PackageInformation": self.pkgList.toDict()})
-        if self.level >= 2 and self.componentList.cnt > 0:
-            bomDict.update({"ComponentInformation": self.componentList.toDict()})
-        bomDict.update({"ValidityInformation": self.validityInfo.toDict(self.level)})
+        bomDict.update({"InnerInformation": self.innerList.toDict()})
+        bomDict.update({"ValidityInformation": self.validityInfo.toDict()})
         bomDict.update({"RelationshipInformation": self.relashionshipInfo.toDict()})
         if self.licenseList.cnt > 0:
             bomDict.update({"OtherLicensingInformation": self.licenseList.licenseList2Dict()})
@@ -47,7 +47,7 @@ class OSSBOM():
         return bomDict
 
     @staticmethod
-    def Dfs(dict, layer):
+    def Dfs(dict: Dict, layer: int) -> str:
         ans = ""
         for key, value in dict.items():
             if layer == 0:
@@ -70,17 +70,17 @@ class OSSBOM():
                 ans += f"{key}: {value}\n"
         return ans
 
-    def toTXT(self, IOwriter = sys.stdout):
+    def toTXT(self, IOwriter: sys.TextIO = sys.stdout) -> None:
         content = OSSBOM.Dfs(self.toDict(), 0)
         IOwriter.write(content)
 
-    def toJSON(self, IOwriter = sys.stdout):
+    def toJSON(self, IOwriter: sys.TextIO = sys.stdout) -> None:
         json.dump(self.toDict(), IOwriter, indent=4, default=str)
     
-    def toYAML(self, IOwriter = sys.stdout):
+    def toYAML(self, IOwriter: sys.TextIO = sys.stdout) -> None:
         yaml.dump(self.toDict(), IOwriter, sort_keys=False)
     
-    def toHash(self, path):
+    def toHash(self, path: str) -> None:
         algo = hashlib.sha256()
         with open(path, "rb") as f:
             algo.update(f.read())

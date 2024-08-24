@@ -1,17 +1,20 @@
 from datetime import datetime
-from . import LicenseListVersion
+from typing import Optional
 
 
 class ResourceValidityInfo:
-    def __init__(self, resourceID, 
-                    supplier = None,
-                    originator = None,
-                    downloadLocation = None,
-                    sourceRepo = None,
-                    homepage = None,
-                    releaseTime = None,
-                    builtTime = None,
-                    validUntilTime = None):
+    def __init__(
+        self, 
+        resourceID: str, 
+        supplier: Optional[str] = None,
+        originator: Optional[str] = None,
+        downloadLocation: Optional[str] = None,
+        sourceRepo: Optional[str] = None,
+        homepage: Optional[str] = None,
+        releaseTime: Optional[str] = None,
+        builtTime: Optional[str] = None,
+        validUntilTime: Optional[str] = None
+    ) -> None:
         self.resourceID = resourceID
         self.supplier = supplier if supplier else None
         self.originator = originator if originator else None
@@ -22,7 +25,7 @@ class ResourceValidityInfo:
         self.builtTime = builtTime if builtTime else None
         self.validUntilTime = validUntilTime if validUntilTime else None
 
-    def toDict(self):
+    def toDict(self) -> dict:
         rsInfo = {
             "ResourceID": self.resourceID
         }
@@ -46,21 +49,25 @@ class ResourceValidityInfo:
 
 
 class ValidityInfo:
-    def __init__(self, docValidator = None, 
-                 docValidationTime = None):
+    def __init__(
+        self, 
+        docValidator: Optional[str] = None, 
+        docValidationTime: Optional[str] = None,
+        license_list_version: Optional[str] = None
+    ) -> None:
         self.docCreator = "pkg:github/gmscofield/sbomgt@v1.0"
         self.docCreationTime = datetime.now().strftime("%Y-%m-%dT%H:%M:%SZ")
         self.docValidator = docValidator if docValidator else None
         self.docValidationTime = docValidationTime if docValidationTime else None
-        self.LicenseListVersion = LicenseListVersion
+        self.LicenseListVersion = license_list_version
         self.rsValidityInfo = []
     
 
-    def insert(self, resourceValidityInfo):
+    def insert(self, resourceValidityInfo: ResourceValidityInfo) -> None:
         self.rsValidityInfo.append(resourceValidityInfo)
 
 
-    def toDict(self, level = 1):
+    def toDict(self) -> dict:
         validityInfo = {
             "DocumentCreator": self.docCreator,
             "DocumentCreationTime": self.docCreationTime,
@@ -71,13 +78,12 @@ class ValidityInfo:
         if self.docValidationTime:
             validityInfo["DocumentValidationTime"] = self.docValidationTime
         
-        if level == 3:
-            validityInfo["ResourceValidityInfo"] = []
-            for resource in self.rsValidityInfo:
-                if not resource.supplier and not resource.originator and not resource.downloadLocation \
-                    and not resource.sourceRepo and not resource.homepage and not resource.releaseTime \
-                    and not resource.builtTime and not resource.validUntilTime:
-                    continue
-                validityInfo["ResourceValidityInfo"].append(resource.toDict())
+        validityInfo["ResourceValidityInfo"] = []
+        for resource in self.rsValidityInfo:
+            if not resource.supplier and not resource.originator and not resource.downloadLocation \
+                and not resource.sourceRepo and not resource.homepage and not resource.releaseTime \
+                and not resource.builtTime and not resource.validUntilTime:
+                continue
+            validityInfo["ResourceValidityInfo"].append(resource.toDict())
         
         return validityInfo

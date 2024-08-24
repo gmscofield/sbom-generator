@@ -737,3 +737,6 @@ class Schema(Enum):
     vsftpd_openssl_exception = 'vsftpd-openssl-exception'
     WxWindows_exception_3_1 = 'WxWindows-exception-3.1'
     x11vnc_openssl_exception = 'x11vnc-openssl-exception'
+
+
+VALUES_IN_SCHEMA = [member.value for member in Schema]

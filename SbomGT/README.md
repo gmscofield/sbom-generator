@@ -31,11 +31,10 @@ Options:
 
     -v, --version       Version of the tool
     -i, --input         Input path of software package, default is current path
-    -o, --outfile       Output file path of SBOM, default is stdout
+    -o, --output       Output file path of SBOM, default is stdout
     -f, --format        Output format of SBOM, choose from txt or json, default is txt
-    -l, --level         SBOM level, choose from 1, 2 or 3, default is basic level of SBOM (Level 1)
     --model             SBOM Model, choose from SPDX, CycloneDX or OSSBOM, default is OSSBOM
-    --tree              Present the whole Dependency Tree in the SBOM document
+    --env               Running environment of software package, default is None
 
 Example:
 
