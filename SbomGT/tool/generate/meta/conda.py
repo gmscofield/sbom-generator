@@ -47,8 +47,9 @@ def analyze_metayaml_meta(meta_path: str) -> dict:
             root_name = res.split("/")[-1]
             break
     
+    meta = component_meta_template()
     if not root_name:
-        return None
+        return meta
     
     parsed_yaml = parse_metayaml_meta(meta_path)
     # package
@@ -114,7 +115,6 @@ def analyze_metayaml_meta(meta_path: str) -> dict:
                     dependson.append(parse_depend(depend))
     builddepends = list(builddepends)
     
-    meta = component_meta_template()
     meta["component"] = middleware.Component(
         type="Package: LIBRARY",
         name=pkg_name,

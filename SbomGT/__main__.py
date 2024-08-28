@@ -1,7 +1,10 @@
 import argparse
+import os
 from . import __version__
 from .tool.generate.analyze_sbom import build_bom, output_bom
-from .tool.merge_export.merge_export import Merge_SBOM, Export_SBOM
+from .tool.convert.convert_sbom import Convert_SBOM
+from .tool.export.export_sbom import Export_SBOM
+from .tool.merge.merge_sbom import Merge_SBOM
 
 
 def get_input() -> argparse.Namespace:
@@ -133,6 +136,37 @@ def get_input() -> argparse.Namespace:
         help="SBOM Model, choose from SPDX, CycloneDX or OSSBOM, default is OSSBOM"
     )
     
+    # subcommand: convert SBOM
+    convert_parser = subparsers.add_parser(
+        "convert",
+        help="Convert SBOM between different formats"
+    )
+    convert_parser.add_argument(
+        "-i", "--input", 
+        metavar="<INPUT>", 
+        type=str, 
+        dest="input",
+        required=True,
+        help="Input path of SBOM file to be converted",
+    )
+    convert_parser.add_argument(
+        "-o", "--output",
+        metavar="<OUTPUT>", 
+        type=str, 
+        dest="output",
+        default="-",
+        help="Output file path of SBOM, default is stdout"
+    )
+    convert_parser.add_argument(
+        "--model",
+        metavar="<MODEL>",
+        type=str,
+        dest="model",
+        choices=["spdx", "cyclonedx", "ossbom", "middleware"],
+        default="middleware",
+        help="Target SBOM Model, choose from SPDX, CycloneDX, OSSBOM or middleware, default is middleware"
+    )
+    
     args = parser.parse_args()
     return args
 
@@ -144,11 +178,12 @@ if __name__ == "__main__":
 
     if args.subcmd == "generate":
         import logging
+        from datetime import datetime
         logging.basicConfig(
             format="%(asctime)s (Process %(process)d) [%(levelname)s] %(filename)s:%(lineno)d %(message)s",
             level=logging.INFO,
             filemode="w",
-            filename=f"/home/jcg/SBOM/sbom-generator/SbomGT/log/test-{args.model}.log"
+            filename=f"/home/jcg/SBOM/sbom-generator/SbomGT/log/{args.input.split(os.sep)[-1]}-{args.model}-{datetime.now().strftime('%Y-%m-%dT%H:%M:%SZ')}.log"
         )
         
         bom = build_bom(args.input, args.model, args.env)
@@ -157,6 +192,8 @@ if __name__ == "__main__":
         Merge_SBOM(args.input, args.output, args.model).merge_sbom()
     elif args.subcmd == "export":
         Export_SBOM(args.input, args.output, args.model, args.id).export_sbom()
+    elif args.subcmd == "convert":
+        Convert_SBOM(args.input, args.output, args.model).convert_sbom()
     
     
 

@@ -3,6 +3,9 @@ import ast
 import pandas as pd
 import re
 from uuid import uuid4
+import pkg_resources
+import logging
+import sys
 from packageurl import PackageURL
 from packageurl.contrib import url2purl
 from typing import Optional, List
@@ -10,14 +13,29 @@ from ....output import middleware
 from ....schema.cdx_model import spdx
 
 
-
-ALGOLIST = ["SHA1", "SHA224", "SHA256", "SHA384", "SHA512", "SHA3-256", "SHA3-384", "SHA3-512", 
-            "BLAKE2b-256", "BLAKE2b-384", "BLAKE2b-512", "BLAKE3", "MD2", "MD4", "MD5", "MD6", "ADLER32"]
+ALGOLIST = [
+    "SHA1", 
+    "SHA224", 
+    "SHA256", 
+    "SHA384", 
+    "SHA512", 
+    "SHA3-256", 
+    "SHA3-384", 
+    "SHA3-512", 
+    "BLAKE2b-256", 
+    "BLAKE2b-384", 
+    "BLAKE2b-512", 
+    "BLAKE3", 
+    "MD2", 
+    "MD4", 
+    "MD5", 
+    "MD6", 
+    "ADLER32"
+]
 
 P2I_FILE = os.path.join(os.path.dirname(__file__), "data", "p2i.csv")
 
 p2idf = pd.read_csv(P2I_FILE)
-
 
 
 def component_meta_template() -> dict:
@@ -59,6 +77,10 @@ def parse_depend(depend: str) -> dict:
         if depend[i] in ('<', '>', '=', '!', '~', '^', '*', '(', ')', ':'):
             return {depend[:i]: (depend[i:], get_imports(depend[:i]))}            
     return {depend: (None, get_imports(depend))}
+
+
+def normalize_pkgname(package_name: str) -> str:
+    return re.sub('[^A-Za-z0-9.]+', '-', package_name)
 
 
 def is_valid_purl(purl: str) -> bool:
@@ -103,7 +125,7 @@ def get_imports(package_name: str) -> set:
         return None
 
 
-def pyfile_depends(filename: str) -> List[str]:
+def pyfile_depends_else(filename: str) -> List[str]:
     content = open(filename, 'r', errors='ignore').read()
     imports = set()
     try:
@@ -122,6 +144,83 @@ def pyfile_depends(filename: str) -> List[str]:
                 imports.add(lib)
     
     return list(imports)
+
+
+class ImportAnalyzer(ast.NodeVisitor):
+    def __init__(self) -> None:
+        self.all_imports = []
+        self.conditional_imports = []
+
+    def visit_Import(self, node: ast.Import) -> None:
+        for alias in node.names:
+            top_name = alias.name.split('.')[0]
+            self.all_imports.append((top_name, node.lineno))
+            if self.is_in_conditional(node):
+                self.conditional_imports.append((top_name, node.lineno))
+        self.generic_visit(node)
+
+    def visit_ImportFrom(self, node: ast.ImportFrom) -> None:
+        module = node.module.split('.')[0] if node.module else None
+        if module:
+            self.all_imports.append((module, node.lineno))
+            if self.is_in_conditional(node):
+                self.conditional_imports.append((module, node.lineno))
+        self.generic_visit(node)
+
+    def is_in_conditional(self, node: ast.Import) -> bool:
+        # check whether the import code is in a conditional code block
+        parent = getattr(node, 'parent', None)
+        while parent:
+            if isinstance(parent, (ast.If, ast.Try, ast.FunctionDef)):
+                return True
+            parent = getattr(parent, 'parent', None)
+        return False
+
+
+def analyze_imports(source_code: str) -> tuple:
+    tree = ast.parse(source_code)
+
+    # add parent attribute to each node
+    for node in ast.walk(tree):
+        for child in ast.iter_child_nodes(node):
+            child.parent = node
+
+    analyzer = ImportAnalyzer()
+    analyzer.visit(tree)
+    
+    return analyzer.all_imports, analyzer.conditional_imports
+
+
+def get_deps_from_pip(package_name: str, site_packages_path: str) -> dict:
+    if os.path.exists(site_packages_path):
+        sys.path.insert(0, site_packages_path)
+    else:
+        raise ValueError(f"Site-packages path not found: {site_packages_path}")    
+    pkg_resources.working_set = pkg_resources.WorkingSet(sys.path)
+    
+    pkg2import_pkgs = {}
+    for pkg in package_name:
+        try:
+            distribution = pkg_resources.get_distribution(pkg)
+            dependencies = distribution.requires()
+            pkg2import_pkgs[pkg] = [dependency.project_name for dependency in dependencies]
+        except:
+            pkg2import_pkgs[pkg] = []
+    
+    return pkg2import_pkgs
+
+
+def pyfile_depends(path: str) -> List[str]:
+    # get all import libraries and conditional imports
+    try:
+        code = open(path, 'r', errors='ignore').read()
+        all_imports, conditional_imports = analyze_imports(code)
+    except:
+        logging.info(f"Failed to analyze imports in {path}.")
+        return pyfile_depends_else(path), []
+    all_imports = list(set(all_imports))
+    conditional_imports = list(set(conditional_imports))
+    return [imp[0] for imp in all_imports], [imp[0] for imp in conditional_imports]
 
 
 class IDManager:

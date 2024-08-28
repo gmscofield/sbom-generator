@@ -12,8 +12,8 @@ from scancode_toolkit.src.scancode.api import get_licenses
 from .meta.pypi import analyze_pyproject_meta, analyze_requirements_meta, analyze_setup_meta, \
     analyze_pipfile_meta, analyze_pipfileLock_meta, analyze_pdm_meta, analyze_poetry_meta
 from .meta.conda import analyze_metayaml_meta, analyze_condayml_meta, analyze_environmentyaml_meta
-from .meta.utils import component_meta_template, name_email_str2ind, IDManager, \
-    is_py_file, pyfile_depends, is_valid_purl, get_imports, str2license
+from .meta.utils import component_meta_template, name_email_str2ind, IDManager, normalize_pkgname, \
+    is_py_file, pyfile_depends, is_valid_purl, get_imports, str2license, get_deps_from_pip
 from .meta.parse_pyfile import analyze_pyfile_meta, copyright_from_pkgfile
 from ...output import middleware, cdx_conversion, spdx_conversion, ossbom_conversion
 
@@ -198,144 +198,184 @@ def req_pypi(pkg_name: Optional[str]) -> Optional[dict]:
     return meta
 
 
-def analyze_env(path: str) -> Optional[List[dict]]:
-    logging.info("Analyze Environment...")
+def parse_record(record_path: str) -> set:
+    df = pd.read_csv(record_path, header=None)
+    import_name = set()
+    for pre in list(df[0]):
+        pre = pre.replace("../", "")
+        prefix = pre.split("/")[0]
+        if not "dist-info" in prefix and not "__" in prefix:
+            suffix = prefix.split(".")[-1]
+            if suffix == "py":
+                import_name.add(prefix.replace(".py", ""))
+            elif suffix == prefix:
+                import_name.add(prefix)
+    return import_name
+
+def find_site_packages(path: str) -> Optional[str]:
     dirs = os.listdir(path)
     if "lib" in dirs:
-        env_flag = False
+        env_pkg = ""
         for d in os.listdir(os.path.join(path, "lib")):
             env_path = os.path.join(path, "lib", d, "site-packages")
             if os.path.exists(env_path):
-                env_flag = True
                 env_pkg = env_path
                 break
-        if not env_flag:
-            return None, None
-        
-        pkg_metas = []
-        env_list = os.listdir(env_pkg)
-        pkg2import = {}
-        all_depends = {}
-        tem_relations = []
-        for p in env_list:
-            cur_path = os.path.join(env_pkg, p)
+        return env_pkg
+    else:
+        return None
+
+
+def analyze_env(path: str) -> Optional[List[dict]]:
+    env_pkg = find_site_packages(path)
+    if not env_pkg:
+        return None, None
+    
+    logging.info(f"Analyze Environment {env_pkg}...")
+    pkg_metas = []
+    env_list = os.listdir(env_pkg)
+    pkg2import = {}
+    all_depends = {}
+    cond_depends = {}
+    tem_relations = []
+    for p in env_list:
+        cur_path = os.path.join(env_pkg, p)
+        if "dist-info" in p or "egg-info" in p:
             if "dist-info" in p:
                 metadata_path = os.path.join(cur_path, "METADATA")
-                info = {}
-                with open(metadata_path, "r", errors="ignore") as f:
-                    rows = f.readlines()
-                    for row in rows:
-                        i = row.find(":")
-                        if i > 0:
-                            info[row[:i].strip()] = row[i+1:].strip()
-                
-                name = info.get("Name", None)
-                if not name:
-                    name = p.split("-")[0]
-                version = info.get("Version", None)
-                if not version:
-                    version = p.strip(".dist-info").split("-")[-1]
-                logging.info(f"Analyzing Package {name}-{version}")
-                
-                description = info.get("Description", None)
-                if not description:
-                    description = info.get("Summary", None)
-                meta = component_meta_template()
-                meta["component"] = middleware.Component(
-                    type="Package: LIBRARY",
-                    name=name,
-                    version=version,
-                    ID=IDManager.get_pkgID(pkgtype = "pypi", name = name, version = version),
-                    originator=[middleware.Individual(type="person", name=info.get("Author", None), email=info.get("Author-email", None))],
-                    supplier=middleware.Individual(type="organization", name=info.get("Maintainer", None), email=info.get("Maintainer-email", None)),
-                    licenses=[middleware.License(type="concluded", spdxID=info.get("License", None))],
-                    description=description,
-                    download_location=info.get("Download-url", None),
-                    homepage=info.get("Home-page", None),
-                    source_repo=info.get("Project-url", None),
-                )
-                pkg_metas.append(meta)
-                
+            else:
+                metadata_path = os.path.join(cur_path, "PKG-INFO")
+            info = {}
+            with open(metadata_path, "r", errors="ignore") as f:
+                rows = f.readlines()
+                for row in rows:
+                    i = row.find(":")
+                    if i > 0:
+                        info[row[:i]] = row[i+1:].strip()
+            
+            name = info.get("Name", None)
+            if not name:
+                name = p.split("-")[0]
+            version = info.get("Version", None)
+            if not version:
+                version = p.replace(".dist-info", "").split("-")[-1]
+            logging.info(f"Analyzing Package {name}-{version}")
+            
+            description = info.get("Description", None)
+            if not description:
+                description = info.get("Summary", None)
+            meta = component_meta_template()
+            meta["component"] = middleware.Component(
+                type="Package: LIBRARY",
+                name=name,
+                version=version,
+                ID=IDManager.get_pkgID(pkgtype = "pypi", name = name, version = version),
+                originator=[middleware.Individual(type="person", name=info.get("Author", None), email=info.get("Author-email", None))],
+                supplier=middleware.Individual(type="organization", name=info.get("Maintainer", None), email=info.get("Maintainer-email", None)),
+                licenses=[middleware.License(type="concluded", spdxID=info.get("License", None))],
+                description=description,
+                download_location=info.get("Download-url", None),
+                homepage=info.get("Home-page", None),
+                source_repo=info.get("Project-url", None),
+            )
+            pkg_metas.append(meta)
+            
+            if "dist-info" in p:
                 record_path = os.path.join(env_pkg, p, "RECORD")
-                df = pd.read_csv(record_path, header=None)
-                import_name = set()
-                for pre in list(df[0]):
-                    prefix = pre.split("/")[0]
-                    if not "dist-info" in prefix and not "__" in prefix and not ".." in prefix:
-                        suffix = prefix.split(".")[-1]
-                        if suffix == "py" or suffix == prefix:
-                            import_name.add(prefix)
-                pkg2import[name] = import_name
-                
-            elif os.path.isdir(cur_path):
-                depends = []
-                paths = os.walk(cur_path)
-                for root, dirs, files in paths:
-                    for file in files:
-                        if is_py_file(file):
-                            dependency = pyfile_depends(os.path.join(root, file))
-                            remove_lst = []
-                            for dep in dependency:
-                                if (dep + ".py") in files or dep in dirs:
-                                    remove_lst.append(dep)
-                            for dep in remove_lst:
-                                dependency.remove(dep)
-                            depends.extend(dependency)
-                            
-                            comp_files = analyze_pyfile_meta(os.path.join(root, file))
-                            if comp_files:
-                                file_meta = component_meta_template()
-                                for i, one_comp in enumerate(comp_files):
-                                    if i == 0:
-                                        file_meta["component"] = one_comp
-                                        file_meta["relationships"]["contains"] = []
-                                    else:
-                                        file_meta["relationships"]["contains"].append(
-                                            middleware.Relationship(
-                                                type="CONTAINS",
-                                                sourceID=file_meta["component"].ID,
-                                                targetID=one_comp.ID
-                                            )
-                                        )
-                                        one_comp_meta = component_meta_template()
-                                        one_comp_meta["component"] = one_comp
-                                        pkg_metas.append(one_comp_meta)
-                                pkg_metas.append(file_meta)
-                                tem_relations.append(
-                                    middleware.Relationship(
-                                        type="CONTAINS",
-                                        sourceID=p,
-                                        targetID=file_meta["component"].ID
-                                    )
-                                )
-                all_depends[p] = list(set(depends))
-            elif is_py_file(cur_path):
-                dependency = pyfile_depends(os.path.join(root, file))
-                all_depends[p.strip(".py")] = dependency
-        
-        for pkg in pkg_metas:
-            name = pkg["component"].name
-            import_name = pkg2import.get(name, [])
+            else:
+                record_path = os.path.join(env_pkg, p, "installed-files.txt")
+            if name in ["setuptools", "pip"]:
+                pkg2import[name] = name
+            else:
+                pkg2import[name] = parse_record(record_path)
+            
+        elif os.path.isdir(cur_path):
+            if p in ["setuptools", "pip"]:
+                all_depends[p] = []
+                cond_depends[p] = []
+                continue
             depends = []
-            for imp in import_name:
-                if imp in all_depends:
-                    depends += all_depends[imp]
-                remove_rels = []
-                for tem_rel in tem_relations:
-                    if tem_rel.sourceID == imp:
-                        remove_rels.append(tem_rel)
-                        rel = tem_rel.copy()
-                        rel.sourceID = pkg["component"].ID
-                        pkg_contain = pkg["relationships"].get("contains", [])
-                        pkg_contain.append(rel)
-                        pkg["relationships"]["contains"] = pkg_contain
-                for rel in remove_rels:
-                    tem_relations.remove(rel)
-            pkg["dependson"] = list(set(depends))
-        
-        return pkg_metas, pkg2import
-    else:
-        return None, None
+            conditional_depends = []
+            paths = os.walk(cur_path)
+            for root, dirs, files in paths:
+                for file in files:
+                    if is_py_file(file):
+                        dependency, conditional_dependency = pyfile_depends(os.path.join(root, file))
+                        remove_lst = []
+                        for dep in dependency:
+                            if (dep + ".py") in files or dep in dirs:
+                                remove_lst.append(dep)
+                        for dep in remove_lst:
+                            dependency.remove(dep)
+                            if dep in conditional_dependency:
+                                conditional_dependency.remove(dep)
+                        depends.extend(dependency)
+                        conditional_depends.extend(conditional_dependency)
+                        
+                        comp_files = analyze_pyfile_meta(os.path.join(root, file))
+                        if comp_files:
+                            file_meta = component_meta_template()
+                            for i, one_comp in enumerate(comp_files):
+                                if i == 0:
+                                    file_meta["component"] = one_comp
+                                    file_meta["relationships"]["contains"] = []
+                                else:
+                                    file_meta["relationships"]["contains"].append(
+                                        middleware.Relationship(
+                                            type="CONTAINS",
+                                            sourceID=file_meta["component"].ID,
+                                            targetID=one_comp.ID
+                                        )
+                                    )
+                                    one_comp_meta = component_meta_template()
+                                    one_comp_meta["component"] = one_comp
+                                    pkg_metas.append(one_comp_meta)
+                            pkg_metas.append(file_meta)
+                            tem_relations.append(
+                                middleware.Relationship(
+                                    type="CONTAINS",
+                                    sourceID=p,
+                                    targetID=file_meta["component"].ID
+                                )
+                            )
+            all_depends[p] = list(set(depends))
+            cond_depends[p] = list(set(conditional_depends))
+        elif is_py_file(cur_path):
+            if "setup" in cur_path or "test" in cur_path or "build" in cur_path:
+                continue
+            dependency, conditional_dependency = pyfile_depends(cur_path)
+            all_depends[p.replace(".py", "")] = list(set(dependency))
+            cond_depends[p.replace(".py", "")] = list(set(conditional_dependency))
+    
+    logging.info(f"all_depends: {all_depends}")
+    logging.info(f"cond_depends: {cond_depends}")
+    # query_pkg_imports = get_deps_from_pip([pkg["component"].name for pkg in pkg_metas], env_pkg)
+    # logging.info(f"query_pkg_imports: {query_pkg_imports}")
+    for pkg in pkg_metas:
+        name = pkg["component"].name
+        import_name = pkg2import.get(name, [])
+        depends = []
+        pkg_cond_depends = []
+        for imp in import_name:
+            if imp in all_depends:
+                depends += all_depends[imp]
+                pkg_cond_depends += cond_depends[imp]
+            remove_rels = []
+            for tem_rel in tem_relations:
+                if tem_rel.sourceID == imp:
+                    remove_rels.append(tem_rel)
+                    rel = tem_rel.copy()
+                    rel.sourceID = pkg["component"].ID
+                    pkg_contain = pkg["relationships"].get("contains", [])
+                    pkg_contain.append(rel)
+                    pkg["relationships"]["contains"] = pkg_contain
+            for rel in remove_rels:
+                tem_relations.remove(rel)
+        pkg["dependson"] = {}
+        pkg["dependson"]["all_depends"] = list(set(depends))
+        pkg["dependson"]["conditional_depends"] = list(set(pkg_cond_depends))
+    logging.info("Analyze Environment Done!")
+    return pkg_metas, pkg2import
 
 
 def merge_depends_withenv(
@@ -398,6 +438,8 @@ def merge_depends_withoutenv(
                 
                 for dep in from_file_depends:
                     possible_pkg_name = get_imports(dep)
+                    if not possible_pkg_name:
+                        continue
                     mutual_names = list(possible_pkg_name.intersection(set(from_meta_depends)))
                     if mutual_names:
                         correspond_pkg = mutual_names[0]
@@ -564,8 +606,8 @@ def build_bom(
                 )
             elif ((not ".copyright" in file.lower()) and "copyright" in file.lower()):
                 comp_copyright = copyright_from_pkgfile(os.path.join(root, file))
-            elif is_py_file(file):                
-                dependency = pyfile_depends(os.path.join(root, file))
+            elif is_py_file(file):
+                dependency, _ = pyfile_depends(os.path.join(root, file))
                 remove_lst = []
                 for dep in dependency:
                     if dep in dirs or (dep + ".py") in files or dep in root:
@@ -577,7 +619,7 @@ def build_bom(
                     comp_deps = testdepends.get("root", [])
                     comp_deps.extend(dependency)
                     testdepends["root"] = comp_deps
-                elif "build" in root:
+                elif "build" in root or "setup" in file:
                     comp_deps = builddepends.get("root", [])
                     comp_deps.extend(dependency)
                     builddepends["root"] = comp_deps
@@ -651,45 +693,53 @@ def build_bom(
             relations.extend(pkg["relationships"].get("contains", []))
             comp_dic[pkg["component"].name] = pkg["component"]
         
+        query_pkg_imports = get_deps_from_pip(list(comp_dic.keys()), find_site_packages(env))
+        logging.info(f"query_pkg_imports: {str(query_pkg_imports)}")
+        
         for pkg in pkg_metas:
-            for dep_import in pkg["dependson"]:
+            for dep_import in pkg["dependson"].get("all_depends", []):
                 for pkg_name, deps in pkg2import.items():
                     if dep_import in deps:
+                        if dep_import in pkg["dependson"]["conditional_depends"]:
+                            if not normalize_pkgname(pkg_name) in query_pkg_imports.get(pkg["component"].name, []):
+                                continue
                         comp = comp_dic.get(pkg_name, None)
                         if comp:
                             if comp.name == pkg["component"].name:
                                 continue
                             logging.info(f"Add DEPENDS_ON Relationship between {pkg['component'].name} and {comp.name}")
-                            relations.append(
-                                middleware.Relationship(
-                                    type="DEPENDS_ON",
-                                    sourceID=pkg["component"].ID,
-                                    targetID=comp.ID
-                                )
+                            rel = middleware.Relationship(
+                                type="DEPENDS_ON",
+                                sourceID=pkg["component"].ID,
+                                targetID=comp.ID
                             )
+                            if not rel in relations:
+                                relations.append(rel)
                             break
+
             if pkg["relationships"].get("contains", None):
                 for rel in pkg["relationships"]["contains"]:
                     relations.append(rel)
 
         root_deps = dependson.get("root", [])
+        root_deps = [dep for dep in root_deps if isinstance(dep, str)]
+        root_deps = list(set(root_deps))
         for dep_import in root_deps:
-            if isinstance(dep_import, str):
-                for pkg_name, deps in pkg2import.items():
-                    if dep_import in deps:
-                        comp = comp_dic.get(pkg_name, None)
-                        if comp:
-                            if comp.name == root_comp.name:
-                                continue
-                            logging.info(f"Add DEPENDS_ON Relationship between {pkg['component'].name} and {comp.name}")
-                            relations.append(
-                                middleware.Relationship(
-                                    type="DEPENDS_ON",
-                                    sourceID=root_comp.ID,
-                                    targetID=comp.ID
-                                )
-                            )
-                            break
+            for pkg_name, deps in pkg2import.items():
+                if dep_import in deps:
+                    comp = comp_dic.get(pkg_name, None)
+                    if comp:
+                        if comp.name == root_comp.name:
+                            continue
+                        logging.info(f"Add DEPENDS_ON Relationship between {pkg['component'].name} and {comp.name}")
+                        rel = middleware.Relationship(
+                            type="DEPENDS_ON",
+                            sourceID=root_comp.ID,
+                            targetID=comp.ID
+                        )
+                        if not rel in relations:
+                            relations.append(rel)
+                        break
         
         relations = merge_depends_withenv(testdepends, "TEST_DEPENDENCY_OF", relations, comp_dic, pkg2import)
         relations = merge_depends_withenv(builddepends, "BUILD_DEPENDENCY_OF", relations, comp_dic, pkg2import)

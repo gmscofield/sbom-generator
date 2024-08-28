@@ -7,6 +7,7 @@ from typing import Union, List, Optional, Tuple
 from datetime import datetime
 import pydantic
 import json
+import logging
 import re
 
 class Cdx2Middleware:
@@ -39,6 +40,7 @@ class Cdx2Middleware:
                         lfc.append(lf_str)
             
             if bom.metadata.tools:
+                print(bom.metadata.tools)
                 if isinstance(bom.metadata.tools, cdx_model.Tools):
                     if bom.metadata.tools.components:
                         for comp in bom.metadata.tools.components:
@@ -798,8 +800,8 @@ class Middleware2Cdx:
         
         if self.midware.license_list_version:
             properties.append(
-                Extension(
-                    key="license_list_version",
+                cdx_model.Property(
+                    name="license_list_version",
                     value=self.midware.license_list_version
                 )
             )
@@ -913,13 +915,17 @@ class Middleware2Cdx:
             return None
         if ind.type == "person":
             email = None
-            if ind.email.count("@") == 1:
-                email = ind.email
-            elif ind.email.count("@") > 1:
-                for em in ind.email.split(" "):
-                    if "@" in em:
-                        email = em
-                        break
+            if ind.email:
+                if ind.email.count("@") == 1:
+                    email = ind.email
+                    email = email.replace(",", "")
+                elif ind.email.count("@") > 1:
+                    for em in ind.email.split(" "):
+                        if "@" in em:
+                            email = em
+                            break
+                    email = email.replace(",", "")
+            
             return cdx_model.OrganizationalContact(
                 bom_ref=cdx_model.RefType(root=ind.ID) if ind.ID else None,
                 name=ind.name,

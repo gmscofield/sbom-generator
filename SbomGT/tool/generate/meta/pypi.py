@@ -18,7 +18,7 @@ def analyze_setup_meta(path: str) -> dict:
     doc = parse_file.get("project_urls", {})
     exRefs = []
     for key, value in doc.items():
-        if key != "Source":
+        if key != "Source" and value:
             exRefs.append(
                 middleware.ExternalReference(
                     url=value,
@@ -54,6 +54,7 @@ def analyze_setup_meta(path: str) -> dict:
         if isinstance(depend, str):
             testdepends.append(parse_depend(depend))
     if testdepends:
+        meta["relationships"]["testdepends"] = {}
         meta["relationships"]["testdepends"]["root"] = testdepends
 
     meta["component"].download_location = parse_file.get("download_url", None)
@@ -73,7 +74,10 @@ def in2pyproject(parsed_toml: dict, result: dict, url: str = "") -> None:
                 result["pkg"]["pkgName"] = value
         elif key == "version":
             if not result["pkg"].get("version", None):
-                result["pkg"]["version"] = value
+                if isinstance(value, str):
+                    result["pkg"]["version"] = value
+                elif isinstance(value, dict):
+                    result["pkg"]["version"] = value.get("version", None)
         elif key == "license":
             if isinstance(value, str):
                 result["pkg"]["declaredLicense"] = value
@@ -193,15 +197,15 @@ def analyze_pyproject_meta(path: str) -> dict:
 
 # requirements.txt
 def analyze_requirements_meta(path: str) -> dict:
+    meta = component_meta_template()
     req_file = pip_requirements_parser.RequirementsFile.from_file(
         filename = path,
         include_nested = False,
     )
     if not req_file or not req_file.requirements:
-        return []
+        return meta
 
     dependson = []
-    meta = component_meta_template()
     meta["relationships"] = {
         "testdepends": {},
         "devdepends": {},
@@ -210,13 +214,17 @@ def analyze_requirements_meta(path: str) -> dict:
     for req in req_file.requirements:
         requirement = req.dumps()
         if path.endswith('dev.txt'):
-            build_dep = meta["relationships"].get("devdepends", [])
+            build_dep = meta["relationships"]["devdepends"].get("root", [])
             build_dep.append(parse_depend(requirement))
             meta["relationships"]["devdepends"]["root"] = build_dep
         elif path.endswith(('test.txt', 'tests.txt')):
-            test_dep = meta["relationships"].get("testdepends", [])
+            test_dep = meta["relationships"]["testdepends"].get("root", [])
             test_dep.append(parse_depend(requirement))
             meta["relationships"]["testdepends"]["root"] = test_dep
+        elif path.endswith('build.txt'):
+            build_dep = meta["relationships"]["builddepends"].get("root", [])
+            build_dep.append(parse_depend(requirement))
+            meta["relationships"]["builddepends"]["root"] = build_dep
         else:
             dependson.append(parse_depend(requirement))
     meta["dependson"]["root"] = dependson

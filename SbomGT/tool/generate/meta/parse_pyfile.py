@@ -135,7 +135,6 @@ def analyze_pyfile_meta(path: str) -> Optional[List]:
         ID=fileID,
         licenses=[file_lic],
         checksum=checksums,
-        built_date=file_info.get("date", None),
     )
     
     all_holder = cr_info.get("holders", [])
