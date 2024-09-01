@@ -1,0 +1,250 @@
+openapi: 3.1.0
+info:
+  description: A tool for generating, merging, exporting and converting Software Bill
+    of Materials (SBOM)
+  title: SBOM Integration Tool
+  version: 1.0.0
+paths:
+  /convert:
+    get:
+      operationId: convert_sbom_convert_get
+      parameters:
+      - in: query
+        name: input
+        required: true
+        schema:
+          title: Input
+          type: string
+      - in: query
+        name: output
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Output
+      - in: query
+        name: model
+        required: false
+        schema:
+          default: middleware
+          enum:
+          - spdx
+          - cyclonedx
+          - ossbom
+          - middleware
+          title: Model
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Convert Sbom
+  /export:
+    get:
+      operationId: export_sbom_export_get
+      parameters:
+      - in: query
+        name: input
+        required: true
+        schema:
+          title: Input
+          type: string
+      - in: query
+        name: output
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Output
+      - in: query
+        name: model
+        required: false
+        schema:
+          default: middleware
+          enum:
+          - spdx
+          - cyclonedx
+          - ossbom
+          - middleware
+          title: Model
+          type: string
+      - in: query
+        name: id
+        required: true
+        schema:
+          items:
+            type: string
+          title: Id
+          type: array
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Export Sbom
+  /generate:
+    get:
+      operationId: generate_sbom_generate_get
+      parameters:
+      - in: query
+        name: input
+        required: true
+        schema:
+          title: Input
+          type: string
+      - in: query
+        name: output
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Output
+      - in: query
+        name: model
+        required: false
+        schema:
+          default: middleware
+          enum:
+          - spdx
+          - cyclonedx
+          - ossbom
+          - middleware
+          title: Model
+          type: string
+      - in: query
+        name: env
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Env
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Response'
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Generate Sbom
+  /merge:
+    get:
+      operationId: merge_sbom_merge_get
+      parameters:
+      - in: query
+        name: input
+        required: true
+        schema:
+          items:
+            type: string
+          maxItems: 2
+          minItems: 2
+          title: Input
+          type: array
+      - in: query
+        name: output
+        required: false
+        schema:
+          anyOf:
+          - type: string
+          - type: 'null'
+          title: Output
+      - in: query
+        name: model
+        required: false
+        schema:
+          default: middleware
+          enum:
+          - spdx
+          - cyclonedx
+          - ossbom
+          - middleware
+          title: Model
+          type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema: {}
+          description: Successful Response
+        '422':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HTTPValidationError'
+          description: Validation Error
+      summary: Merge Sbom
+components:
+  schemas:
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: '#/components/schemas/ValidationError'
+          title: Detail
+          type: array
+      title: HTTPValidationError
+      type: object
+    Response:
+      properties:
+        message:
+          description: The response message of the request
+          title: Response Message
+          type: string
+        sbom:
+          anyOf:
+          - type: object
+          - type: 'null'
+          description: The software bill of materials in SPDX, CycloneDX, OSSBOM or
+            middleware format
+          title: Software Bill of Materials
+      required:
+      - message
+      - sbom
+      title: Response
+      type: object
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: string
+            - type: integer
+          title: Location
+          type: array
+        msg:
+          title: Message
+          type: string
+        type:
+          title: Error Type
+          type: string
+      required:
+      - loc
+      - msg
+      - type
+      title: ValidationError
+      type: object
